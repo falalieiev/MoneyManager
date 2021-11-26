@@ -7,21 +7,12 @@
 
 import UIKit
 
-protocol AddBillDelegate: AnyObject {
-    func saveBillName(billName: String)
-}
-
-protocol AddCurrencyDelegate: AnyObject {
-    func saveCurrency(currency: String)
-}
-
 class AddBillVC: UIViewController {
 
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     
     var billName = ""
-    weak var delegate: AddBillDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +25,9 @@ class AddBillVC: UIViewController {
     }
 
     @IBAction func toCurrencyChoice(_ sender: UIButton) {
+        if billName != "" {
         performSegue(withIdentifier: "addCurrency", sender: sender)
+        }
     }
 }
 
@@ -52,7 +45,6 @@ extension AddBillVC: UITextFieldDelegate {
         textField.resignFirstResponder()
         if textField.text != "" {
             billName = textField.text!
-            delegate?.saveBillName(billName: billName)
         }
         return true
     }
@@ -68,5 +60,10 @@ extension AddBillVC: UITextFieldDelegate {
                 nextButton.alpha = 0.5
             }
             return true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! AddCurrencyVC
+        destinationVC.billName = billName
     }
 }

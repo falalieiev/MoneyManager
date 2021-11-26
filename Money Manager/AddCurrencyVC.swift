@@ -15,10 +15,13 @@ class AddCurrencyVC: UIViewController {
         super.viewDidLoad()
         currencyPicker.delegate = self
         currencyPicker.dataSource = self
+        
+        currencyPicker.selectRow(6, inComponent: 0, animated: false)
+        pickerView(currencyPicker, didSelectRow: 6, inComponent: 0)
     }
     
-    weak var delegate: AddCurrencyDelegate?
     var currencySymbol = ""
+    var billName = ""
     let currencyArray = ["(AED) United Arab Emirates dirham - د.إ",
                          "(AFN) Afghan afghani - ؋",
                          "(ALL) Albanian lek - L",
@@ -31,7 +34,6 @@ class AddCurrencyVC: UIViewController {
                          "(AZN) Azerbaijani manat - m"]
     
     @IBAction func toBudget(_ sender: UIButton) {
-        delegate?.saveCurrency(currency: currencySymbol)
         performSegue(withIdentifier: "addBudget", sender: sender)
     }
 }
@@ -61,5 +63,11 @@ extension AddCurrencyVC: UIPickerViewDataSource {
 extension AddCurrencyVC: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currencySymbol = currencyArray[row].components(separatedBy: "- ")[1]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! AddBudgetVC
+        destinationVC.currencyNew = currencySymbol
+        destinationVC.billNew = billName
     }
 }

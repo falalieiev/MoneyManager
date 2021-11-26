@@ -6,14 +6,22 @@
 //
 
 import UIKit
+import RealmSwift
 
 class AddBudgetVC: UIViewController {
-
+    
     @IBOutlet weak var budgetLabel: UILabel!
+    
+    var bill: Results<Bill>!
+    var billNew = ""
+    var currencyNew = ""
+    var budgetNew: Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(billNew)
+        let realm = RealmService.shared.realm
+        bill = realm.objects(Bill.self)
     }
 
     @IBAction func numberButtons(_ sender: UIButton) {
@@ -49,6 +57,13 @@ class AddBudgetVC: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
+        let budgetString = budgetLabel.text!
+        budgetNew = Float(budgetString) ?? 0.0
+        
+        let newBill = Bill(billNew, currencyNew, budgetNew)
+        RealmService.shared.create(newBill)
+        
         navigationController?.popToRootViewController(animated: true)
     }
+    
 }
