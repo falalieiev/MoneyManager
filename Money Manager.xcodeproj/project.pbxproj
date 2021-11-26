@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A3480B92751089D009FDED2 /* AddBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480B82751089D009FDED2 /* AddBillVC.swift */; };
+		1A3480BB275147C9009FDED2 /* AddCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */; };
+		1A3480BD27515346009FDED2 /* AddBudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BC27515346009FDED2 /* AddBudgetVC.swift */; };
 		1A6629B22750A45800E67D37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6629B12750A45800E67D37 /* AppDelegate.swift */; };
 		1A6629B42750A45800E67D37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6629B32750A45800E67D37 /* SceneDelegate.swift */; };
-		1A6629B62750A45800E67D37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6629B52750A45800E67D37 /* ViewController.swift */; };
+		1A6629B62750A45800E67D37 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6629B52750A45800E67D37 /* MainVC.swift */; };
 		1A6629B92750A45800E67D37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A6629B72750A45800E67D37 /* Main.storyboard */; };
 		1A6629BB2750A45900E67D37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A6629BA2750A45900E67D37 /* Assets.xcassets */; };
 		1A6629BE2750A45900E67D37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A6629BC2750A45900E67D37 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A3480B82751089D009FDED2 /* AddBillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBillVC.swift; sourceTree = "<group>"; };
+		1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrencyVC.swift; sourceTree = "<group>"; };
+		1A3480BC27515346009FDED2 /* AddBudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetVC.swift; sourceTree = "<group>"; };
 		1A6629AE2750A45800E67D37 /* Money Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A6629B12750A45800E67D37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A6629B32750A45800E67D37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1A6629B52750A45800E67D37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1A6629B52750A45800E67D37 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		1A6629B82750A45800E67D37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1A6629BA2750A45900E67D37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A6629BD2750A45900E67D37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,11 +64,14 @@
 			children = (
 				1A6629B12750A45800E67D37 /* AppDelegate.swift */,
 				1A6629B32750A45800E67D37 /* SceneDelegate.swift */,
-				1A6629B52750A45800E67D37 /* ViewController.swift */,
 				1A6629B72750A45800E67D37 /* Main.storyboard */,
 				1A6629BA2750A45900E67D37 /* Assets.xcassets */,
 				1A6629BC2750A45900E67D37 /* LaunchScreen.storyboard */,
 				1A6629BF2750A45900E67D37 /* Info.plist */,
+				1A6629B52750A45800E67D37 /* MainVC.swift */,
+				1A3480B82751089D009FDED2 /* AddBillVC.swift */,
+				1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */,
+				1A3480BC27515346009FDED2 /* AddBudgetVC.swift */,
 			);
 			path = "Money Manager";
 			sourceTree = "<group>";
@@ -138,9 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A6629B62750A45800E67D37 /* ViewController.swift in Sources */,
+				1A3480BB275147C9009FDED2 /* AddCurrencyVC.swift in Sources */,
+				1A3480BD27515346009FDED2 /* AddBudgetVC.swift in Sources */,
+				1A6629B62750A45800E67D37 /* MainVC.swift in Sources */,
 				1A6629B22750A45800E67D37 /* AppDelegate.swift in Sources */,
 				1A6629B42750A45800E67D37 /* SceneDelegate.swift in Sources */,
+				1A3480B92751089D009FDED2 /* AddBillVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

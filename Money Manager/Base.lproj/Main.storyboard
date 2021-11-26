@@ -74,10 +74,10 @@
             </objects>
             <point key="canvasLocation" x="250" y="-579"/>
         </scene>
-        <!--View Controller-->
+        <!--Add BillVC-->
         <scene sceneID="mVU-os-eZL">
             <objects>
-                <viewController id="Ttk-zQ-HCw" sceneMemberID="viewController">
+                <viewController id="Ttk-zQ-HCw" customClass="AddBillVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tkx-NQ-U0H">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,6 +98,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toCurrencyChoice:" destination="Ttk-zQ-HCw" eventType="touchUpInside" id="gj4-lK-8kq"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="PJ2-l4-9qL">
                                 <rect key="frame" x="10" y="137.99999999999997" width="408" height="344.33333333333326"/>
@@ -157,17 +160,19 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="NtG-7C-rV1"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="02k-0v-TOq" kind="show" id="ax1-oL-vht"/>
+                        <outlet property="nextButton" destination="xks-KX-0Rp" id="YSO-IT-9ie"/>
+                        <outlet property="textField" destination="rOi-yc-cuG" id="emQ-Eg-jSd"/>
+                        <segue destination="02k-0v-TOq" kind="show" identifier="addCurrency" id="ax1-oL-vht"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCt-sR-Ae3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.8840579710145" y="-578.57142857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--MainVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,7 +343,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Ttk-zQ-HCw" kind="show" id="JtZ-6A-vTR"/>
+                        <outlet property="billView" destination="ldL-kb-2br" id="lmC-jg-6nL"/>
+                        <segue destination="Ttk-zQ-HCw" kind="show" identifier="addBill" id="JtZ-6A-vTR"/>
                         <segue destination="qjL-Cd-27h" kind="show" id="ge0-2v-2mV"/>
                         <segue destination="kzo-XV-hD2" kind="show" id="KwS-9j-pJT"/>
                         <segue destination="H82-a8-FMg" kind="show" id="zlU-8Q-MX5"/>
@@ -619,10 +625,10 @@
             </objects>
             <point key="canvasLocation" x="1031.7757009345794" y="792.44060475161996"/>
         </scene>
-        <!--View Controller-->
+        <!--Add CurrencyVC-->
         <scene sceneID="W3N-5e-aMc">
             <objects>
-                <viewController id="02k-0v-TOq" sceneMemberID="viewController">
+                <viewController id="02k-0v-TOq" customClass="AddCurrencyVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C5V-RT-nYq">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -643,6 +649,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="toBudget:" destination="02k-0v-TOq" eventType="touchUpInside" id="BFU-Oq-4Cx"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="eJR-PV-OAW">
                                 <rect key="frame" x="10" y="138" width="408" height="699"/>
@@ -692,7 +701,8 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="ZjL-MN-WkB"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="3Pw-Go-3ma" kind="show" id="4Ft-B3-mm0"/>
+                        <outlet property="currencyPicker" destination="ZRI-w0-pQl" id="2Or-EQ-81h"/>
+                        <segue destination="3Pw-Go-3ma" kind="show" identifier="addBudget" id="4Ft-B3-mm0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3v-tX-OJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -717,10 +727,10 @@
             </objects>
             <point key="canvasLocation" x="250" y="113"/>
         </scene>
-        <!--View Controller-->
+        <!--Add BudgetVC-->
         <scene sceneID="JvB-Gh-fbL">
             <objects>
-                <viewController id="3Pw-Go-3ma" sceneMemberID="viewController">
+                <viewController id="3Pw-Go-3ma" customClass="AddBudgetVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jyi-gu-KcL">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -741,6 +751,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="ADu-J9-Ka6"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="KJm-G2-z7m">
                                 <rect key="frame" x="10" y="138" width="408" height="699"/>
@@ -793,6 +806,9 @@
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="KJb-BL-Kjz"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJA-8Y-JZ4">
                                                         <rect key="frame" x="136" y="0.0" width="136" height="61.333333333333336"/>
@@ -801,6 +817,9 @@
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="P4S-SO-Rgw"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iec-l9-G23">
                                                         <rect key="frame" x="272" y="0.0" width="136" height="61.333333333333336"/>
@@ -809,6 +828,9 @@
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="h5r-Pz-YNn"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -822,6 +844,9 @@
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="Qzj-zl-s62"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghZ-Nq-VRz">
                                                         <rect key="frame" x="136" y="0.0" width="136" height="61.333333333333336"/>
@@ -830,6 +855,9 @@
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="cwd-Kd-EhO"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HzX-rA-bJq">
                                                         <rect key="frame" x="272" y="0.0" width="136" height="61.333333333333336"/>
@@ -838,6 +866,9 @@
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="ODj-uE-CY6"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -851,6 +882,9 @@
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="aWo-m0-lPH"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZV0-m0-F1H">
                                                         <rect key="frame" x="136" y="0.0" width="136" height="61.666666666666664"/>
@@ -859,6 +893,9 @@
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="7Or-5D-UGq"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuX-UB-scb">
                                                         <rect key="frame" x="272" y="0.0" width="136" height="61.666666666666664"/>
@@ -867,6 +904,9 @@
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="2Ml-sJ-e6w"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -880,6 +920,9 @@
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="BnK-Cp-8QA"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dey-ib-Fae">
                                                         <rect key="frame" x="136" y="0.0" width="136" height="61.333333333333336"/>
@@ -888,6 +931,9 @@
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="AhX-76-UeB"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AI9-Ej-Tbj">
                                                         <rect key="frame" x="272" y="0.0" width="136" height="61.333333333333336"/>
@@ -896,6 +942,9 @@
                                                         <state key="normal" image="delete.left" catalog="system">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="removeButtonPressed:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="gMS-Vy-hSQ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -919,6 +968,9 @@
                     <navigationItem key="navigationItem" id="WyA-D9-zB7">
                         <barButtonItem key="backBarButtonItem" title=" " id="cKN-A3-E0f"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="budgetLabel" destination="AMy-WZ-RCg" id="L1s-Qd-6r0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwy-L4-aMV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
