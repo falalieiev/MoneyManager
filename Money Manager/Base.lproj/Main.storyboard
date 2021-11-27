@@ -12,13 +12,13 @@
         <!--Счета-->
         <scene sceneID="n9l-DQ-Kyq">
             <objects>
-                <tableViewController id="qjL-Cd-27h" sceneMemberID="viewController">
+                <tableViewController id="qjL-Cd-27h" customClass="SelectBillTBC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="pD6-ww-G2q">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93743115659999998" green="0.93677461149999997" blue="0.95686608549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="zlR-P7-JvJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="billCell" rowHeight="44" id="zlR-P7-JvJ" customClass="BillCell" customModule="Money_Manager" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zlR-P7-JvJ" id="uzv-QQ-EDO">
@@ -61,6 +61,11 @@
                                         <constraint firstItem="lkP-ez-9V9" firstAttribute="top" secondItem="uzv-QQ-EDO" secondAttribute="topMargin" id="tX8-hw-Au5"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="billColor" destination="ORZ-a5-YG5" id="lGG-Tz-z08"/>
+                                    <outlet property="billName" destination="5tQ-sd-mU8" id="ZYD-Xa-ryU"/>
+                                    <outlet property="billValue" destination="slZ-Bc-dhB" id="l8S-T0-4hi"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -68,7 +73,14 @@
                             <outlet property="delegate" destination="qjL-Cd-27h" id="pbz-oO-jyt"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Счета" id="vxc-Fa-RBu"/>
+                    <navigationItem key="navigationItem" title="Счета" id="vxc-Fa-RBu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tNc-KK-fft">
+                            <connections>
+                                <action selector="addBillPressed:" destination="qjL-Cd-27h" id="RzG-hF-XCJ"/>
+                                <segue destination="Ttk-zQ-HCw" kind="show" identifier="addFromBills" id="8Rz-ge-P5b"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cec-b8-mrB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -181,20 +193,20 @@
                                 <rect key="frame" x="10" y="88" width="408" height="804"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LZi-bs-o5X" userLabel="Operations">
-                                        <rect key="frame" x="0.0" y="0.0" width="408" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="408" height="45"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tBC-U6-FgY" userLabel="Expenses">
-                                                <rect key="frame" x="0.0" y="0.0" width="201.66666666666666" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="201.66666666666666" height="45"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vH3-aj-2gm">
-                                                        <rect key="frame" x="0.0" y="8.6666666666666607" width="35" height="18"/>
+                                                        <rect key="frame" x="0.0" y="13.666666666666661" width="35" height="17.999999999999996"/>
                                                         <color key="tintColor" systemColor="systemRedColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="DXh-4Y-jNG"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-$12,500.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Fa3-PK-w8h">
-                                                        <rect key="frame" x="35" y="7.3333333333333268" width="166.66666666666666" height="20.333333333333329"/>
+                                                        <rect key="frame" x="35" y="12.333333333333327" width="166.66666666666666" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -209,16 +221,16 @@
                                                 </userDefinedRuntimeAttributes>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eNE-Kq-Pla" userLabel="Income">
-                                                <rect key="frame" x="206.66666666666663" y="0.0" width="201.33333333333337" height="35"/>
+                                                <rect key="frame" x="206.66666666666663" y="0.0" width="201.33333333333337" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+$1,000,000.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="sBZ-YP-oEw">
-                                                        <rect key="frame" x="0.0" y="7.3333333333333268" width="166.33333333333334" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="12.333333333333327" width="166.33333333333334" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="chB-T3-INd">
-                                                        <rect key="frame" x="166.33333333333334" y="8.6666666666666607" width="35" height="18"/>
+                                                        <rect key="frame" x="166.33333333333334" y="13.666666666666661" width="35" height="17.999999999999996"/>
                                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="35" id="xlB-gD-uoE"/>
@@ -235,20 +247,20 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="zK9-xM-NW8"/>
+                                            <constraint firstAttribute="height" constant="45" id="zK9-xM-NW8"/>
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nzf-HL-gya" userLabel="Bill">
-                                        <rect key="frame" x="0.0" y="40" width="408" height="35"/>
+                                        <rect key="frame" x="0.0" y="50" width="408" height="45"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aVp-w8-3OC">
-                                                <rect key="frame" x="0.0" y="0.0" width="5" height="35"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="5" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="5" id="zAh-md-oLD"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="muP-BB-aBE">
-                                                <rect key="frame" x="5" y="3.6666666666666661" width="35" height="27.666666666666671"/>
+                                                <rect key="frame" x="5" y="3.6666666666666643" width="35" height="37.666666666666671"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="cnw-3F-kHd"/>
@@ -256,16 +268,16 @@
                                                 <imageReference key="image" image="plus" catalog="system" symbolScale="small"/>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ldL-kb-2br">
-                                                <rect key="frame" x="40" y="0.0" width="363" height="35"/>
+                                                <rect key="frame" x="40" y="0.0" width="363" height="45"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавить счет" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHB-RD-DGf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="181.66666666666666" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="181.66666666666666" height="45"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1K-x3-VeA">
-                                                        <rect key="frame" x="181.66666666666663" y="0.0" width="181.33333333333337" height="35"/>
+                                                        <rect key="frame" x="181.66666666666663" y="0.0" width="181.33333333333337" height="45"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -273,7 +285,7 @@
                                                 </subviews>
                                             </stackView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h2n-1J-nJx">
-                                                <rect key="frame" x="403" y="0.0" width="5" height="35"/>
+                                                <rect key="frame" x="403" y="0.0" width="5" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="5" id="ic9-bf-wp2"/>
                                                 </constraints>
@@ -281,7 +293,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="7yA-SX-Tf7"/>
+                                            <constraint firstAttribute="height" constant="45" id="7yA-SX-Tf7"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
@@ -291,7 +303,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jaE-7P-300">
-                                        <rect key="frame" x="0.0" y="80" width="408" height="724"/>
+                                        <rect key="frame" x="0.0" y="100" width="408" height="704"/>
                                         <color key="backgroundColor" red="0.93743115659999998" green="0.93677461149999997" blue="0.95686608549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="X5h-Ec-Xla">
@@ -340,6 +352,9 @@
                         </button>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ofH-I0-aOf">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addTransactionPressed:" destination="BYZ-38-t0r" id="1gp-46-QAf"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -348,8 +363,8 @@
                         <outlet property="billValue" destination="e1K-x3-VeA" id="2PP-yM-xio"/>
                         <outlet property="billView" destination="ldL-kb-2br" id="lmC-jg-6nL"/>
                         <segue destination="Ttk-zQ-HCw" kind="show" identifier="addBill" id="JtZ-6A-vTR"/>
-                        <segue destination="qjL-Cd-27h" kind="show" id="ge0-2v-2mV"/>
-                        <segue destination="kzo-XV-hD2" kind="show" id="KwS-9j-pJT"/>
+                        <segue destination="qjL-Cd-27h" kind="show" identifier="toBillSelection" id="ge0-2v-2mV"/>
+                        <segue destination="kzo-XV-hD2" kind="show" identifier="addTransaction" id="KwS-9j-pJT"/>
                         <segue destination="H82-a8-FMg" kind="show" id="zlU-8Q-MX5"/>
                     </connections>
                 </viewController>
@@ -426,7 +441,7 @@
         <!--Добавить-->
         <scene sceneID="G22-AQ-X8F">
             <objects>
-                <viewController id="kzo-XV-hD2" sceneMemberID="viewController">
+                <viewController id="kzo-XV-hD2" customClass="AddTransactionVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f1L-e0-Kmz">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -480,6 +495,9 @@
                                                         <state key="normal" title="1">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="Jcf-Pp-SoT"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b11-TR-j1y">
                                                         <rect key="frame" x="136" y="0.0" width="136" height="100"/>
@@ -488,6 +506,9 @@
                                                         <state key="normal" title="2">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="cAj-nL-9y7"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGa-Cc-WPU">
                                                         <rect key="frame" x="272" y="0.0" width="136" height="100"/>
@@ -496,6 +517,9 @@
                                                         <state key="normal" title="3">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="d8Q-JL-Pkv"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -509,6 +533,9 @@
                                                         <state key="normal" title="4">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="qdw-XN-Ocg"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7q-Dl-2Jt">
                                                         <rect key="frame" x="136" y="0.0" width="136" height="100"/>
@@ -517,6 +544,9 @@
                                                         <state key="normal" title="5">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="Jgz-YQ-H6I"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hD-sY-TJq">
                                                         <rect key="frame" x="272" y="0.0" width="136" height="100"/>
@@ -525,6 +555,9 @@
                                                         <state key="normal" title="6">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="WXz-VM-J51"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -538,6 +571,9 @@
                                                         <state key="normal" title="7">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="304-4d-1xi"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVM-5P-BdT">
                                                         <rect key="frame" x="136" y="0.0" width="136" height="100"/>
@@ -546,6 +582,9 @@
                                                         <state key="normal" title="8">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="zZM-EG-9IB"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PmM-kq-ncV">
                                                         <rect key="frame" x="272" y="0.0" width="136" height="100"/>
@@ -554,6 +593,9 @@
                                                         <state key="normal" title="9">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="Vn8-8W-Lef"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -567,6 +609,9 @@
                                                         <state key="normal" title=".">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="nZ7-LV-WTx"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IZo-Rb-U8r">
                                                         <rect key="frame" x="136" y="0.0" width="136" height="100"/>
@@ -575,6 +620,9 @@
                                                         <state key="normal" title="0">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="numberButtons:" destination="kzo-XV-hD2" eventType="touchUpInside" id="i6X-Wb-Z3u"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS2-CF-Mu0">
                                                         <rect key="frame" x="272" y="0.0" width="136" height="100"/>
@@ -583,6 +631,9 @@
                                                         <state key="normal" image="delete.left" catalog="system">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="removeButtonPressed:" destination="kzo-XV-hD2" eventType="touchUpInside" id="6gv-Z8-bD6"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -604,6 +655,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addButtonPressed:" destination="kzo-XV-hD2" eventType="touchUpInside" id="Qk0-um-3X8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -623,6 +677,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Добавить" id="ges-td-fEz"/>
+                    <connections>
+                        <outlet property="notesTextField" destination="oxM-B8-b0o" id="v9y-hR-UmE"/>
+                        <outlet property="segmentPicker" destination="OXS-Wa-l5w" id="HKR-ju-Hro"/>
+                        <outlet property="valueLabel" destination="CsE-ht-I7c" id="0mM-io-obV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2yL-q0-82a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -980,6 +1039,9 @@
             <point key="canvasLocation" x="2534.5794392523362" y="-578.61771058315344"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="JtZ-6A-vTR"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="arrow.up" catalog="system" width="120" height="128"/>

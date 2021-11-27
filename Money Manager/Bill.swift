@@ -21,4 +21,5 @@ class Bill: Object {
         self.budget = budget
     }
     
+    let transaction = List<Transaction>()
 }

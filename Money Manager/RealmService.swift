@@ -25,6 +25,16 @@ class RealmService {
         }
     }
     
+    func append(_ object: Transaction, _ bill: Bill) {
+        do {
+            try realm.write{
+                bill.transaction.append(object)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     func update<T: Object>(_ object: T, with dictionary: [String: Any?]) {
         do {
             try realm.write {

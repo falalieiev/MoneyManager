@@ -16,6 +16,7 @@ class AddBudgetVC: UIViewController {
     var billNew = ""
     var currencyNew = ""
     var budgetNew: Float = 0.0
+    let numberPadManager = NumberPadManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,35 +26,11 @@ class AddBudgetVC: UIViewController {
     }
 
     @IBAction func numberButtons(_ sender: UIButton) {
-        var numValue = sender.currentTitle!
-        
-        if budgetLabel.text!.contains(".") && numValue == "." {
-            numValue = ""
-        } else if budgetLabel.text == "0" && numValue == "." {
-            budgetLabel.text = "0"
-        } else if budgetLabel.text == "0" {
-            budgetLabel.text = ""
-        }
-        
-        if (budgetLabel.text?.contains("."))! {
-            let limitDecimalPlace = 2
-            let decimalPlace = budgetLabel.text?.components(separatedBy: ".").last
-            if (decimalPlace?.count)! < limitDecimalPlace {
-                
-            } else {
-                numValue = ""
-            }
-        }
-        
-        budgetLabel.text! += numValue
+        numberPadManager.numbers(budgetLabel, sender)
     }
     
     @IBAction func removeButtonPressed(_ sender: UIButton) {
-        if budgetLabel.text!.count > 1 {
-            budgetLabel.text?.removeLast()
-        } else {
-            budgetLabel.text = "0"
-        }
+        numberPadManager.remove(budgetLabel, sender)
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {

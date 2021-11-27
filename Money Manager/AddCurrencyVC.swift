@@ -25,7 +25,7 @@ class AddCurrencyVC: UIViewController {
     let currencyArray = ["(AED) United Arab Emirates dirham - د.إ",
                          "(AFN) Afghan afghani - ؋",
                          "(ALL) Albanian lek - L",
-                         "(AMD) Armenian dram - դր.",
+                         "(AMD) Armenian dram - դր",
                          "(ANG) Netherlands Antillean guilder - ƒ",
                          "(AOA) Angolan kwanza - Kz",
                          "(ARS) Argentine peso - $",
