@@ -20,7 +20,6 @@ class AddBudgetVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(billNew)
         let realm = RealmService.shared.realm
         bill = realm.objects(Bill.self)
     }

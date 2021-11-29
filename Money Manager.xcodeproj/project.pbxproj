@@ -10,9 +10,12 @@
 		1A3480B92751089D009FDED2 /* AddBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480B82751089D009FDED2 /* AddBillVC.swift */; };
 		1A3480BB275147C9009FDED2 /* AddCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */; };
 		1A3480BD27515346009FDED2 /* AddBudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BC27515346009FDED2 /* AddBudgetVC.swift */; };
+		1A391E442754EBC700757EBB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A391E432754EBC700757EBB /* Extensions.swift */; };
 		1A6497AA27520FC000DA1027 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497A927520FC000DA1027 /* AddTransactionVC.swift */; };
 		1A6497AC2752163D00DA1027 /* NumberPadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497AB2752163D00DA1027 /* NumberPadManager.swift */; };
 		1A6497AE2752182C00DA1027 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497AD2752182C00DA1027 /* Transaction.swift */; };
+		1A6497B0275230D500DA1027 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497AF275230D500DA1027 /* CategoryCell.swift */; };
+		1A6497B22752477900DA1027 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497B12752477900DA1027 /* TransactionCell.swift */; };
 		1A6629B22750A45800E67D37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6629B12750A45800E67D37 /* AppDelegate.swift */; };
 		1A6629B42750A45800E67D37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6629B32750A45800E67D37 /* SceneDelegate.swift */; };
 		1A6629B62750A45800E67D37 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6629B52750A45800E67D37 /* MainVC.swift */; };
@@ -31,9 +34,12 @@
 		1A3480B82751089D009FDED2 /* AddBillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBillVC.swift; sourceTree = "<group>"; };
 		1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrencyVC.swift; sourceTree = "<group>"; };
 		1A3480BC27515346009FDED2 /* AddBudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetVC.swift; sourceTree = "<group>"; };
+		1A391E432754EBC700757EBB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1A6497A927520FC000DA1027 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
 		1A6497AB2752163D00DA1027 /* NumberPadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadManager.swift; sourceTree = "<group>"; };
 		1A6497AD2752182C00DA1027 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		1A6497AF275230D500DA1027 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		1A6497B12752477900DA1027 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
 		1A6629AE2750A45800E67D37 /* Money Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A6629B12750A45800E67D37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A6629B32750A45800E67D37 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +106,9 @@
 				1A6497A927520FC000DA1027 /* AddTransactionVC.swift */,
 				1A6497AB2752163D00DA1027 /* NumberPadManager.swift */,
 				1A6497AD2752182C00DA1027 /* Transaction.swift */,
+				1A6497AF275230D500DA1027 /* CategoryCell.swift */,
+				1A6497B12752477900DA1027 /* TransactionCell.swift */,
+				1A391E432754EBC700757EBB /* Extensions.swift */,
 			);
 			path = "Money Manager";
 			sourceTree = "<group>";
@@ -239,12 +248,15 @@
 				1A3480BB275147C9009FDED2 /* AddCurrencyVC.swift in Sources */,
 				1A3480BD27515346009FDED2 /* AddBudgetVC.swift in Sources */,
 				1A6497AC2752163D00DA1027 /* NumberPadManager.swift in Sources */,
+				1A6497B0275230D500DA1027 /* CategoryCell.swift in Sources */,
 				1A70B80A275207210016986B /* SelectBillTBC.swift in Sources */,
 				1A6629B62750A45800E67D37 /* MainVC.swift in Sources */,
 				1A6497AE2752182C00DA1027 /* Transaction.swift in Sources */,
 				1A6629B22750A45800E67D37 /* AppDelegate.swift in Sources */,
+				1A6497B22752477900DA1027 /* TransactionCell.swift in Sources */,
 				1A9A5BA327515C8D00EE2E92 /* Bill.swift in Sources */,
 				1A6629B42750A45800E67D37 /* SceneDelegate.swift in Sources */,
+				1A391E442754EBC700757EBB /* Extensions.swift in Sources */,
 				1A70B806275206A30016986B /* BillCell.swift in Sources */,
 				1A6497AA27520FC000DA1027 /* AddTransactionVC.swift in Sources */,
 				1A3480B92751089D009FDED2 /* AddBillVC.swift in Sources */,

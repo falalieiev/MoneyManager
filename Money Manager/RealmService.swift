@@ -35,6 +35,30 @@ class RealmService {
         }
     }
     
+    func sumOfIncome(object: List<Transaction>) -> Float {
+        let filter = object.filter("transactionType == %@", 1)
+        let value = filter.value(forKey: "value") as! [Float]
+        let sumOfIncome = value.reduce(0, {$0 + $1})
+        return sumOfIncome
+    }
+    
+    func sumOfExpenses(object: List<Transaction>) -> Float {
+        let filter1 = object.filter("transactionType == %@", 0)
+        let value1 = filter1.value(forKey: "value") as! [Float]
+        let sumOfExpenses = value1.reduce(0, {$0 + $1})
+        return sumOfExpenses
+    }
+    
+    func sumOfAllTransactions(object: List<Transaction>) -> Float {
+        let filter = object.filter("transactionType == %@", 1)
+        let value = filter.value(forKey: "value") as! [Float]
+        let sumOfIncome = value.reduce(0, {$0 + $1})
+        let filter1 = object.filter("transactionType == %@", 0)
+        let value1 = filter1.value(forKey: "value") as! [Float]
+        let sumOfExpenses = value1.reduce(0, {$0 + $1})
+        return sumOfIncome - sumOfExpenses
+    }
+        
     func update<T: Object>(_ object: T, with dictionary: [String: Any?]) {
         do {
             try realm.write {
@@ -56,4 +80,6 @@ class RealmService {
             print(error)
         }
     }
+    
+    
 }

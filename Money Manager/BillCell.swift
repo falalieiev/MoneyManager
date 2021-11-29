@@ -24,8 +24,8 @@ class BillCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureBill(with bill: Bill) {
-        let billValueString = String(bill.budget)
+    func configureBill(with bill: Bill, sum: Float) {
+        let billValueString = String(bill.budget + sum)
         billColor.textColor = .red
         billName.text = bill.name
         billValue.text = bill.currency + billValueString
