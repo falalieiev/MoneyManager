@@ -414,21 +414,22 @@
                         <outlet property="billView" destination="ldL-kb-2br" id="lmC-jg-6nL"/>
                         <outlet property="expensesLabel" destination="Fa3-PK-w8h" id="ut4-Ii-nVx"/>
                         <outlet property="incomeLabel" destination="sBZ-YP-oEw" id="xmF-8g-jJS"/>
+                        <outlet property="summaryView" destination="LZi-bs-o5X" id="X0x-Go-nau"/>
                         <outlet property="tableView" destination="jaE-7P-300" id="3a6-mh-wQM"/>
                         <segue destination="Ttk-zQ-HCw" kind="show" identifier="addBill" id="JtZ-6A-vTR"/>
                         <segue destination="qjL-Cd-27h" kind="show" identifier="toBillSelection" id="ge0-2v-2mV"/>
                         <segue destination="kzo-XV-hD2" kind="show" identifier="addTransaction" id="KwS-9j-pJT"/>
-                        <segue destination="H82-a8-FMg" kind="show" id="zlU-8Q-MX5"/>
+                        <segue destination="H82-a8-FMg" kind="show" identifier="transactionObserve" id="zlU-8Q-MX5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.7757009345794" y="113.39092872570195"/>
         </scene>
-        <!--View Controller-->
+        <!--Transactions SummaryVC-->
         <scene sceneID="fEV-cL-hAV">
             <objects>
-                <viewController id="H82-a8-FMg" sceneMemberID="viewController">
+                <viewController id="H82-a8-FMg" customClass="TransactionsSummaryVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WgI-GK-D6X">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -445,25 +446,12 @@
                                             <segment title="Расход"/>
                                             <segment title="Доход"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="transactionTypeChanged:" destination="H82-a8-FMg" eventType="valueChanged" id="OwT-LS-7fU"/>
+                                        </connections>
                                     </segmentedControl>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTU-vv-X5y">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTU-vv-X5y" customClass="PieChartView" customModule="Charts">
                                         <rect key="frame" x="0.0" y="40" width="408" height="230"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="•" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ep-li-2LL">
-                                                <rect key="frame" x="278" y="8" width="9" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
-                                                <color key="textColor" red="0.91818076370000001" green="0.2295874953" blue="0.18032661080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Бензин" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFf-V9-h85">
-                                                <rect key="frame" x="308" y="8" width="58" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="230" id="ZV4-Vc-i26"/>
@@ -471,7 +459,56 @@
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Skt-KS-Rmd">
                                         <rect key="frame" x="0.0" y="275" width="408" height="529"/>
-                                        <color key="backgroundColor" red="0.54038248960000002" green="0.95355516669999996" blue="0.31853935150000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.93743115659999998" green="0.93677461149999997" blue="0.95686608549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="pdY-Vm-dYw" customClass="TransactionCell" customModule="Money_Manager" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.666666030883789" width="408" height="42.666667938232422"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pdY-Vm-dYw" id="PAZ-8f-wSv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="378.33333333333331" height="42.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZgH-hl-6sh">
+                                                            <rect key="frame" x="20" y="11.000000000000002" width="350.33333333333331" height="20.666666666666671"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="•" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEo-FK-4eS">
+                                                                    <rect key="frame" x="0.0" y="0.33333333333333393" width="12" height="20.333333333333329"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="12" id="GUV-qn-x0V"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="17"/>
+                                                                    <color key="textColor" red="0.91818076370000001" green="0.2295874953" blue="0.18032661080000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private 24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PuH-5Q-uVP">
+                                                                    <rect key="frame" x="12" y="0.33333333333333393" width="171.33333333333334" height="20.333333333333329"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1250.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASG-f2-pEs">
+                                                                    <rect key="frame" x="183.33333333333337" y="0.33333333333333393" width="167" height="20.333333333333329"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="ZgH-hl-6sh" secondAttribute="trailing" id="6XB-Rh-izF"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="ZgH-hl-6sh" secondAttribute="bottom" id="Kln-XO-mmA"/>
+                                                        <constraint firstItem="ZgH-hl-6sh" firstAttribute="leading" secondItem="PAZ-8f-wSv" secondAttribute="leadingMargin" id="mma-FY-LEm"/>
+                                                        <constraint firstItem="ZgH-hl-6sh" firstAttribute="top" secondItem="PAZ-8f-wSv" secondAttribute="topMargin" id="rzC-bd-t2B"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="transactionColor" destination="aEo-FK-4eS" id="VmQ-Sp-Kn6"/>
+                                                    <outlet property="transactionName" destination="PuH-5Q-uVP" id="07M-wC-Dnj"/>
+                                                    <outlet property="transactionValue" destination="ASG-f2-pEs" id="G9q-ZP-uyp"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                     </tableView>
                                 </subviews>
                             </stackView>
@@ -486,6 +523,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xGZ-LS-Rr8"/>
+                    <connections>
+                        <outlet property="pieChartView" destination="nTU-vv-X5y" id="5C6-eG-TGI"/>
+                        <outlet property="segmentControl" destination="etB-Vv-UQx" id="jtF-kw-5qn"/>
+                        <outlet property="tableView" destination="Skt-KS-Rmd" id="XVX-Mh-Cww"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iQH-fT-lm0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

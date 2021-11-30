@@ -17,6 +17,7 @@ class MainVC: UIViewController, MainVCDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var expensesLabel: UILabel!
     @IBOutlet weak var incomeLabel: UILabel!
+    @IBOutlet weak var summaryView: UIStackView!
     
     var bill: Results<Bill>!
     var transactionObject: List<Transaction>!
@@ -31,6 +32,8 @@ class MainVC: UIViewController, MainVCDelegate {
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(billTapped))
         billView.addGestureRecognizer(gesture)
+        let gesture1 = UITapGestureRecognizer(target: self, action:  #selector(summaryTapped))
+        summaryView.addGestureRecognizer(gesture1)
         
         let realm = RealmService.shared.realm
         bill = realm.objects(Bill.self)
@@ -61,6 +64,10 @@ class MainVC: UIViewController, MainVCDelegate {
         }
     }
     
+    @objc func summaryTapped(sender : UITapGestureRecognizer) {
+            performSegue(withIdentifier: "transactionObserve", sender: sender)
+    }
+    
     func configureBill(with bill: Bill) {
         billImage.image = UIImage(systemName: "creditcard")
         billName.text = bill.name
@@ -79,6 +86,10 @@ class MainVC: UIViewController, MainVCDelegate {
         } else if segue.identifier == "addTransaction" {
             let destinationAddTransaction = segue.destination as! AddTransactionVC
             destinationAddTransaction.currentBill = bill[billIndex ?? 0]
+        } else if segue.identifier == "transactionObserve" {
+            let destinationVC = segue.destination as! TransactionsSummaryVC
+            destinationVC.transactionObject = transactionObject
+            destinationVC.billIndex = billIndex
         }
     }
     
@@ -93,10 +104,6 @@ class MainVC: UIViewController, MainVCDelegate {
     func loadTransactions() {
         if billIndex != nil {
             transactionObject = bill[billIndex ?? 0].transaction
-//            let new = transactionObject.filter("category == %@", "Развлечения")
-//            let newS = new.value(forKey: "value") as! [Float]
-//            let newSm = newS.reduce(0, {$0 + $1})
-//            print(newSm)
             sumOfIncome = RealmService.shared.sumOfIncome(object: transactionObject)
             sumOfExpenses = RealmService.shared.sumOfExpenses(object: transactionObject)
             expensesLabel.text = sumOfExpenses.floatToString(sumOfExpenses) + billSymbol
@@ -112,7 +119,8 @@ extension MainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath) as! TransactionCell
         
-        print(currentCell.transactionName.text ?? "null")    }
+        print(currentCell.transactionName.text ?? "null")
+    }
 }
 
 extension MainVC: UITableViewDataSource {
