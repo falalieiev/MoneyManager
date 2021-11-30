@@ -93,6 +93,10 @@ class MainVC: UIViewController, MainVCDelegate {
     func loadTransactions() {
         if billIndex != nil {
             transactionObject = bill[billIndex ?? 0].transaction
+//            let new = transactionObject.filter("category == %@", "Развлечения")
+//            let newS = new.value(forKey: "value") as! [Float]
+//            let newSm = newS.reduce(0, {$0 + $1})
+//            print(newSm)
             sumOfIncome = RealmService.shared.sumOfIncome(object: transactionObject)
             sumOfExpenses = RealmService.shared.sumOfExpenses(object: transactionObject)
             expensesLabel.text = sumOfExpenses.floatToString(sumOfExpenses) + billSymbol
