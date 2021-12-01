@@ -450,7 +450,7 @@
                                             <action selector="transactionTypeChanged:" destination="H82-a8-FMg" eventType="valueChanged" id="OwT-LS-7fU"/>
                                         </connections>
                                     </segmentedControl>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTU-vv-X5y" customClass="PieChartView" customModule="Charts">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTU-vv-X5y" customClass="HorizontalBarChartView" customModule="Charts">
                                         <rect key="frame" x="0.0" y="40" width="408" height="230"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -524,7 +524,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="xGZ-LS-Rr8"/>
                     <connections>
-                        <outlet property="pieChartView" destination="nTU-vv-X5y" id="5C6-eG-TGI"/>
+                        <outlet property="chartView" destination="nTU-vv-X5y" id="5C6-eG-TGI"/>
                         <outlet property="segmentControl" destination="etB-Vv-UQx" id="jtF-kw-5qn"/>
                         <outlet property="tableView" destination="Skt-KS-Rmd" id="XVX-Mh-Cww"/>
                     </connections>

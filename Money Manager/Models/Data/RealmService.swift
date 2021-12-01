@@ -58,6 +58,24 @@ class RealmService {
         let sumOfExpenses = value1.reduce(0, {$0 + $1})
         return sumOfIncome - sumOfExpenses
     }
+    
+    func transactionsByOrder(array: [String], object: List<Transaction>, type: Int) -> [Dictionary<String, Float>.Element] {
+        var iterator = 0
+        var dictionary: [String: Float] = [:]
+
+        for _ in array {
+            let category = object.filter("transactionType == %@", type).filter("category == %@", array[iterator])
+            let value = category.value(forKey: "value") as! [Float]
+            let sumOfEachCategory = value.reduce(0, {$0 + $1})
+            dictionary[array[iterator]] = sumOfEachCategory
+            iterator += 1
+        }
+        
+        let sortedDictionary = dictionary.sorted {$0.1 > $1.1}
+        return sortedDictionary
+        //let keysArraySorted = Array(sortedDic.map({ $0.key }))
+        //let valuesArraySorted = Array(sortedDic.map({ $0.value }))
+    }
         
     func update<T: Object>(_ object: T, with dictionary: [String: Any?]) {
         do {

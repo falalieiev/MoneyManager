@@ -89,7 +89,6 @@ class MainVC: UIViewController, MainVCDelegate {
         } else if segue.identifier == "transactionObserve" {
             let destinationVC = segue.destination as! TransactionsSummaryVC
             destinationVC.transactionObject = transactionObject
-            destinationVC.billIndex = billIndex
         }
     }
     
