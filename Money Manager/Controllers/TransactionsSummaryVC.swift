@@ -20,6 +20,7 @@ class TransactionsSummaryVC: UIViewController {
     var arrayExpenses: [String] = []
     var arrayIncome: [String] = []
     var sortedDictionary: [Dictionary<String, Float>.Element] = []
+    var operationsByCategory: Results<Transaction>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,12 @@ class TransactionsSummaryVC: UIViewController {
         arrayIncome = transactionObject.filter("transactionType == %@", 1).distinct(by: ["category"]).value(forKey: "category") as! [String]
         
         sortedDictionary = RealmService.shared.transactionsByOrder(array: arrayExpenses, object: transactionObject, type: 0)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! TransactionsByCategoryVC
+        destinationVC.operations = operationsByCategory
     }
     
     @IBAction func transactionTypeChanged(_ sender: UISegmentedControl) {
@@ -52,7 +59,7 @@ class TransactionsSummaryVC: UIViewController {
         set.colors = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.green]
         if segmentControl.selectedSegmentIndex == 0 {
             set.label = "Расходы"
-
+            
         } else {
             set.label = "Доходы"
         }
@@ -66,11 +73,13 @@ class TransactionsSummaryVC: UIViewController {
 }
 
 extension TransactionsSummaryVC: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let currentCell = tableView.cellForRow(at: indexPath) as! TransactionCell
+        operationsByCategory = transactionObject.filter("transactionType == %@", segmentControl.selectedSegmentIndex).filter("category == %@", currentCell.transactionName.text ?? "empty")
+        performSegue(withIdentifier: "allOperationsByCategory", sender: self)
+        currentCell.isSelected = false
     }
-    
-    
 }
 
 extension TransactionsSummaryVC: UITableViewDataSource {

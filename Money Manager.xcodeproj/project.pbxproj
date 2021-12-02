@@ -22,6 +22,7 @@
 		1A6629B92750A45800E67D37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A6629B72750A45800E67D37 /* Main.storyboard */; };
 		1A6629BB2750A45900E67D37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A6629BA2750A45900E67D37 /* Assets.xcassets */; };
 		1A6629BE2750A45900E67D37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A6629BC2750A45900E67D37 /* LaunchScreen.storyboard */; };
+		1A702B362758BBB900DE41EE /* TransactionsByCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */; };
 		1A70B806275206A30016986B /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70B805275206A30016986B /* BillCell.swift */; };
 		1A70B80A275207210016986B /* SelectBillTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70B809275207210016986B /* SelectBillTBC.swift */; };
 		1A9A5BA327515C8D00EE2E92 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A5BA227515C8D00EE2E92 /* Bill.swift */; };
@@ -49,6 +50,7 @@
 		1A6629BA2750A45900E67D37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A6629BD2750A45900E67D37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1A6629BF2750A45900E67D37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsByCategoryVC.swift; sourceTree = "<group>"; };
 		1A70B805275206A30016986B /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
 		1A70B809275207210016986B /* SelectBillTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBillTBC.swift; sourceTree = "<group>"; };
 		1A9A5BA227515C8D00EE2E92 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				1A70B809275207210016986B /* SelectBillTBC.swift */,
 				1A6497A927520FC000DA1027 /* AddTransactionVC.swift */,
 				1ACC29E6275633A4000C53F2 /* TransactionsSummaryVC.swift */,
+				1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				1A6629B22750A45800E67D37 /* AppDelegate.swift in Sources */,
 				1A6497B22752477900DA1027 /* TransactionCell.swift in Sources */,
 				1A9A5BA327515C8D00EE2E92 /* Bill.swift in Sources */,
+				1A702B362758BBB900DE41EE /* TransactionsByCategoryVC.swift in Sources */,
 				1A6629B42750A45800E67D37 /* SceneDelegate.swift in Sources */,
 				1A391E442754EBC700757EBB /* Extensions.swift in Sources */,
 				1A70B806275206A30016986B /* BillCell.swift in Sources */,

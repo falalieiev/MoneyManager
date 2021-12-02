@@ -49,4 +49,25 @@ class SelectBillTBC: UITableViewController {
         delegate?.updateBillIndex(indexPath.row)
     }
     
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let trashAction = UIContextualAction(style: .destructive, title:  "Trash", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            RealmService.shared.deleteAll(self.bill[indexPath.row], transaction: self.transactionObject)
+            self.delegate?.updateBillIndex(0)
+            self.tableView.reloadData()
+            success(true)
+        })
+        trashAction.backgroundColor = .red
+        trashAction.image = UIImage(systemName: "trash")
+        
+        let editAction = UIContextualAction(style: .normal, title:  "More", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("Update action 2...")
+            success(true)
+        })
+        editAction.backgroundColor = .gray
+        editAction.image = UIImage(systemName: "square.and.pencil")
+        
+        return UISwipeActionsConfiguration(actions: [trashAction, editAction])
+    }
+    
 }

@@ -30,6 +30,16 @@ class AddTransactionVC: UIViewController {
         
         let realm = RealmService.shared.realm
         transaction = realm.objects(Transaction.self)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DispatchQueue.main.async {
+            self.categoriesCollection.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .bottom)
+            self.collectionView(self.categoriesCollection, didSelectItemAt: IndexPath(item: 1, section: 0))
+        }
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {

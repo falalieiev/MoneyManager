@@ -73,8 +73,6 @@ class RealmService {
         
         let sortedDictionary = dictionary.sorted {$0.1 > $1.1}
         return sortedDictionary
-        //let keysArraySorted = Array(sortedDic.map({ $0.key }))
-        //let valuesArraySorted = Array(sortedDic.map({ $0.value }))
     }
         
     func update<T: Object>(_ object: T, with dictionary: [String: Any?]) {
@@ -93,6 +91,17 @@ class RealmService {
         do {
             try realm.write {
                 realm.delete(object)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func deleteAll(_ bill: Bill, transaction: List<Transaction>) {
+        do {
+            try realm.write {
+                realm.delete(bill.transaction)
+                realm.delete(bill)
             }
         } catch {
             print(error)
