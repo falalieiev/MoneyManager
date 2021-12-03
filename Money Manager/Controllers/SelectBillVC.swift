@@ -1,5 +1,5 @@
 //
-//  SelectBillTBC.swift
+//  SelectBillVC.swift
 //  Money Manager
 //
 //  Created by Oleh Falalieiev on 27.11.2021.
@@ -12,7 +12,7 @@ protocol MainVCDelegate: AnyObject {
     func updateBillIndex(_ billIndex: Int)
 }
 
-class SelectBillTBC: UITableViewController {
+class SelectBillVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +26,21 @@ class SelectBillTBC: UITableViewController {
     var bill: Results<Bill>!
     var billIndexPassed: Int?
     var sum1: Float = 0.0
+    var billName = ""
+    var billCurrency = ""
+    var billValue: Float = 0.0
     
     @IBAction func addBillPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addFromBills", sender: sender)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! EditBillVC
+        destinationVC.currency = billCurrency
+        destinationVC.name = billName
+        destinationVC.capital = billValue
+    }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,7 +72,10 @@ class SelectBillTBC: UITableViewController {
         trashAction.image = UIImage(systemName: "trash")
         
         let editAction = UIContextualAction(style: .normal, title:  "More", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            print("Update action 2...")
+            self.billValue = self.bill[indexPath.row].budget
+            self.billName = self.bill[indexPath.row].name
+            self.billCurrency = self.bill[indexPath.row].currency
+            self.performSegue(withIdentifier: "editBill", sender: self)
             success(true)
         })
         editAction.backgroundColor = .gray

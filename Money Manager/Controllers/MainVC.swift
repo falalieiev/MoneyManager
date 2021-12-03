@@ -64,6 +64,7 @@ class MainVC: UIViewController, MainVCDelegate {
             billName.text = "Добавить счет"
             expensesLabel.text = "0.0$"
             incomeLabel.text = "0.0$"
+            itemDates = []
             tableView.reloadData()
         }
     }
@@ -95,7 +96,7 @@ class MainVC: UIViewController, MainVCDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toBillSelection" {
-            guard let destination = segue.destination as? SelectBillTBC else { return }
+            guard let destination = segue.destination as? SelectBillVC else { return }
             destination.delegate = self
         } else if segue.identifier == "addTransaction" {
             let destinationAddTransaction = segue.destination as! AddTransactionVC

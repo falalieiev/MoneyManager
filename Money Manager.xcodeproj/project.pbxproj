@@ -24,9 +24,10 @@
 		1A6629BE2750A45900E67D37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A6629BC2750A45900E67D37 /* LaunchScreen.storyboard */; };
 		1A702B362758BBB900DE41EE /* TransactionsByCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */; };
 		1A70B806275206A30016986B /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70B805275206A30016986B /* BillCell.swift */; };
-		1A70B80A275207210016986B /* SelectBillTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70B809275207210016986B /* SelectBillTBC.swift */; };
+		1A70B80A275207210016986B /* SelectBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70B809275207210016986B /* SelectBillVC.swift */; };
 		1A9A5BA327515C8D00EE2E92 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A5BA227515C8D00EE2E92 /* Bill.swift */; };
 		1A9A5BA527515CA300EE2E92 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A5BA427515CA300EE2E92 /* RealmService.swift */; };
+		1ACB5E7F275A74F8009FC1ED /* EditBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACB5E7E275A74F8009FC1ED /* EditBillVC.swift */; };
 		1ACC29E7275633A4000C53F2 /* TransactionsSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC29E6275633A4000C53F2 /* TransactionsSummaryVC.swift */; };
 		C4B34BBDEA463B1E67363A09 /* Pods_Money_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128F7F4CAC196D51EC82BA56 /* Pods_Money_Manager.framework */; };
 /* End PBXBuildFile section */
@@ -52,9 +53,10 @@
 		1A6629BF2750A45900E67D37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsByCategoryVC.swift; sourceTree = "<group>"; };
 		1A70B805275206A30016986B /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
-		1A70B809275207210016986B /* SelectBillTBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBillTBC.swift; sourceTree = "<group>"; };
+		1A70B809275207210016986B /* SelectBillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBillVC.swift; sourceTree = "<group>"; };
 		1A9A5BA227515C8D00EE2E92 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		1A9A5BA427515CA300EE2E92 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		1ACB5E7E275A74F8009FC1ED /* EditBillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBillVC.swift; sourceTree = "<group>"; };
 		1ACC29E6275633A4000C53F2 /* TransactionsSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSummaryVC.swift; sourceTree = "<group>"; };
 		2DB570E466796FC362AC3B0E /* Pods-Money Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Manager.debug.xcconfig"; path = "Target Support Files/Pods-Money Manager/Pods-Money Manager.debug.xcconfig"; sourceTree = "<group>"; };
 		326E851AE3DC308F1E381077 /* Pods-Money Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Manager.release.xcconfig"; path = "Target Support Files/Pods-Money Manager/Pods-Money Manager.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,10 +125,11 @@
 				1A3480B82751089D009FDED2 /* AddBillVC.swift */,
 				1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */,
 				1A3480BC27515346009FDED2 /* AddBudgetVC.swift */,
-				1A70B809275207210016986B /* SelectBillTBC.swift */,
+				1A70B809275207210016986B /* SelectBillVC.swift */,
 				1A6497A927520FC000DA1027 /* AddTransactionVC.swift */,
 				1ACC29E6275633A4000C53F2 /* TransactionsSummaryVC.swift */,
 				1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */,
+				1ACB5E7E275A74F8009FC1ED /* EditBillVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -292,10 +295,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A3480BB275147C9009FDED2 /* AddCurrencyVC.swift in Sources */,
+				1ACB5E7F275A74F8009FC1ED /* EditBillVC.swift in Sources */,
 				1A3480BD27515346009FDED2 /* AddBudgetVC.swift in Sources */,
 				1A6497AC2752163D00DA1027 /* NumberPadManager.swift in Sources */,
 				1A6497B0275230D500DA1027 /* CategoryCell.swift in Sources */,
-				1A70B80A275207210016986B /* SelectBillTBC.swift in Sources */,
+				1A70B80A275207210016986B /* SelectBillVC.swift in Sources */,
 				1A6629B62750A45800E67D37 /* MainVC.swift in Sources */,
 				1A6497AE2752182C00DA1027 /* Transaction.swift in Sources */,
 				1A6629B22750A45800E67D37 /* AppDelegate.swift in Sources */,
