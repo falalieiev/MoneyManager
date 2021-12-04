@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Редактирование счета-->
+        <!--Редактирование счёта-->
         <scene sceneID="OxC-7e-7Nd">
             <objects>
                 <tableViewController id="niT-Vz-KBR" customClass="EditBillVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,16 +128,258 @@
                             <outlet property="delegate" destination="niT-Vz-KBR" id="Uc3-QP-UYX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Редактирование счета" id="rxB-2K-mln"/>
+                    <navigationItem key="navigationItem" title="Редактирование счёта" id="rxB-2K-mln">
+                        <barButtonItem key="rightBarButtonItem" title="Сохранить" id="pi0-Iz-At1">
+                            <connections>
+                                <action selector="updateBillPressed:" destination="niT-Vz-KBR" id="WbU-io-La0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billCapital" destination="Nce-yA-vty" id="8Jg-Qe-o9a"/>
                         <outlet property="billCurrency" destination="AAx-w6-thi" id="X5R-Mc-cL2"/>
                         <outlet property="billName" destination="jbJ-Mx-i3N" id="R8N-Lo-NfO"/>
+                        <outlet property="numberPadView" destination="Kki-fX-ePV" id="wHU-WE-cKd"/>
+                        <segue destination="zPu-oy-fmI" kind="show" identifier="editCurrency" id="Bk2-fk-cTl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grS-gb-t23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view hidden="YES" contentMode="scaleToFill" id="Kki-fX-ePV">
+                    <rect key="frame" x="0.0" y="0.0" width="428" height="244"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="VFH-aU-i3E">
+                            <rect key="frame" x="0.0" y="0.0" width="428" height="244"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SdY-b2-m5J" userLabel="123">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="61"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SA4-tu-X5O">
+                                            <rect key="frame" x="0.0" y="0.0" width="142.66666666666666" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="1">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="XiT-lS-QoI"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="evx-Kb-hjg"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kms-CB-htT">
+                                            <rect key="frame" x="142.66666666666669" y="0.0" width="142.66666666666669" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="2">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="Vss-az-3Gs"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="NOy-Yu-vr4"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QgA-E2-Thj">
+                                            <rect key="frame" x="285.33333333333331" y="0.0" width="142.66666666666669" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="3">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="9WJ-lm-Wdl"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="09d-Yt-vFy"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MEh-jP-9Nq" userLabel="456">
+                                    <rect key="frame" x="0.0" y="61" width="428" height="61"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HA5-hi-u5E">
+                                            <rect key="frame" x="0.0" y="0.0" width="142.66666666666666" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="4">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="I7T-Op-LOw"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="yMZ-cf-jfP"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1u0-9k-ULv">
+                                            <rect key="frame" x="142.66666666666669" y="0.0" width="142.66666666666669" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="5">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="ZJk-fZ-AFn"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="Ulp-MZ-6mV"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdX-Yd-Rw5">
+                                            <rect key="frame" x="285.33333333333331" y="0.0" width="142.66666666666669" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="6">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="qSH-lN-4LB"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="9xO-Ny-js0"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vqZ-dF-2Pu" userLabel="789">
+                                    <rect key="frame" x="0.0" y="122" width="428" height="61"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-JV-JVg">
+                                            <rect key="frame" x="0.0" y="0.0" width="142.66666666666666" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="7">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="iCr-ob-rxX"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="qcw-Ts-Qkf"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUs-3J-eQ4">
+                                            <rect key="frame" x="142.66666666666669" y="0.0" width="142.66666666666669" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="8">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="Al6-fQ-9RN"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="kRB-PR-eBr"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFZ-F7-Mfz">
+                                            <rect key="frame" x="285.33333333333331" y="0.0" width="142.66666666666669" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="9">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="Mpd-wP-VvW"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="8o1-fT-xHT"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9S6-Kl-PAm" userLabel="back0">
+                                    <rect key="frame" x="0.0" y="183" width="428" height="61"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beM-yH-5UF">
+                                            <rect key="frame" x="0.0" y="0.0" width="142.66666666666666" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title=".">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="aJm-xg-uhS"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="EEC-wK-rqu"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcF-M7-YWX">
+                                            <rect key="frame" x="142.66666666666669" y="0.0" width="142.66666666666669" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="0">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="numberButtons:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="huR-UE-nwj"/>
+                                                <action selector="numbers:" destination="niT-Vz-KBR" eventType="touchUpInside" id="4i3-qb-cSx"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSF-BF-Yau">
+                                            <rect key="frame" x="285.33333333333331" y="0.0" width="142.66666666666669" height="61"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" image="delete.left" catalog="system">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="deleteNumber:" destination="niT-Vz-KBR" eventType="touchUpInside" id="50i-gb-eTQ"/>
+                                                <action selector="removeButtonPressed:" destination="3Pw-Go-3ma" eventType="touchUpInside" id="qnI-qV-bSU"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="244" id="rQu-G3-8Gy"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="C9p-u8-CcH"/>
+                    <color key="backgroundColor" red="0.93743115659999998" green="0.93677461149999997" blue="0.95686608549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstItem="VFH-aU-i3E" firstAttribute="leading" secondItem="C9p-u8-CcH" secondAttribute="leading" id="ESt-9j-E18"/>
+                        <constraint firstItem="VFH-aU-i3E" firstAttribute="top" secondItem="Kki-fX-ePV" secondAttribute="top" id="MPb-v4-hw4"/>
+                        <constraint firstAttribute="bottom" secondItem="VFH-aU-i3E" secondAttribute="bottom" id="Z9U-OB-lBj"/>
+                        <constraint firstItem="C9p-u8-CcH" firstAttribute="trailing" secondItem="VFH-aU-i3E" secondAttribute="trailing" id="fJm-8K-9Xf"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="249.53271028037381" y="-1268.0345572354213"/>
+        </scene>
+        <!--Currency SearchVC-->
+        <scene sceneID="AYe-Gn-WyK">
+            <objects>
+                <tableViewController id="zPu-oy-fmI" customClass="CurrencySearchVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="MVr-yI-hra">
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93743115659999998" green="0.93677461149999997" blue="0.95686608549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" searchBarStyle="minimal" placeholder="Search for currency" id="lcK-fI-0DN">
+                            <rect key="frame" x="0.0" y="0.0" width="428" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="barTintColor" red="0.93743115659999998" green="0.93677461149999997" blue="0.95686608549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="currency" textLabel="JTU-be-ryT" style="IBUITableViewCellStyleDefault" id="veP-VA-iPc">
+                                <rect key="frame" x="0.0" y="88.666666030883789" width="428" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="veP-VA-iPc" id="Njm-pv-9ug">
+                                    <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JTU-be-ryT">
+                                            <rect key="frame" x="20" y="0.0" width="388" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.93743115659999998" green="0.93677461149999997" blue="0.95686608549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="zPu-oy-fmI" id="wdO-Q3-mSm"/>
+                            <outlet property="delegate" destination="zPu-oy-fmI" id="Kr9-Ai-kje"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Fdf-GS-76R"/>
+                    <connections>
+                        <outlet property="searchBar" destination="lcK-fI-0DN" id="t0G-O2-hhc"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dyx-F2-o1b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768" y="-1268"/>
         </scene>
         <!--Счета-->
         <scene sceneID="n9l-DQ-Kyq">
@@ -1067,22 +1309,22 @@
                                 <rect key="frame" x="10" y="138" width="408" height="694"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcf-4A-75Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="408" height="140.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="408" height="135"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="80"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wrp-ku-v2g">
-                                        <rect key="frame" x="0.0" y="190.66666666666669" width="408" height="88.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="185" width="408" height="113.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Выбор валюты" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-y6-Bud">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="58.333333333333336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="63"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Выберите валюту из списке ниже." textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cX1-mS-iJz">
-                                                <rect key="frame" x="0.0" y="68.333333333333314" width="408" height="20.333333333333329"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Выберите валюту из списке ниже или нажмите на гвоздик для поиск." textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cX1-mS-iJz">
+                                                <rect key="frame" x="0.0" y="73" width="408" height="40.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1090,7 +1332,7 @@
                                         </subviews>
                                     </stackView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRI-w0-pQl">
-                                        <rect key="frame" x="0.0" y="329.33333333333326" width="408" height="364.66666666666674"/>
+                                        <rect key="frame" x="0.0" y="348.66666666666674" width="408" height="345.33333333333326"/>
                                     </pickerView>
                                 </subviews>
                             </stackView>
@@ -1112,7 +1354,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="currencyPicker" destination="ZRI-w0-pQl" id="2Or-EQ-81h"/>
+                        <outlet property="searchButton" destination="Jcf-4A-75Q" id="1UZ-mC-lpJ"/>
                         <segue destination="3Pw-Go-3ma" kind="show" identifier="addBudget" id="4Ft-B3-mm0"/>
+                        <segue destination="zPu-oy-fmI" kind="show" identifier="currencySearch" id="TfP-zS-7BR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3v-tX-OJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1389,6 +1633,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="8Rz-ge-P5b"/>
+        <segue reference="Bk2-fk-cTl"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.down" catalog="system" width="120" height="128"/>

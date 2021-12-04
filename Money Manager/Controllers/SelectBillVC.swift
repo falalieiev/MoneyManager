@@ -26,19 +26,22 @@ class SelectBillVC: UITableViewController {
     var bill: Results<Bill>!
     var billIndexPassed: Int?
     var sum1: Float = 0.0
-    var billName = ""
-    var billCurrency = ""
-    var billValue: Float = 0.0
+    var billForEdit: Bill!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
     
     @IBAction func addBillPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addFromBills", sender: sender)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editBill" {
         let destinationVC = segue.destination as! EditBillVC
-        destinationVC.currency = billCurrency
-        destinationVC.name = billName
-        destinationVC.capital = billValue
+        destinationVC.billForEdit = billForEdit
+        }
     }
     
     // MARK: - Table view data source
@@ -72,9 +75,7 @@ class SelectBillVC: UITableViewController {
         trashAction.image = UIImage(systemName: "trash")
         
         let editAction = UIContextualAction(style: .normal, title:  "More", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            self.billValue = self.bill[indexPath.row].budget
-            self.billName = self.bill[indexPath.row].name
-            self.billCurrency = self.bill[indexPath.row].currency
+            self.billForEdit = self.bill[indexPath.row]
             self.performSegue(withIdentifier: "editBill", sender: self)
             success(true)
         })
