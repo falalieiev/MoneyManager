@@ -31,6 +31,8 @@
 		1ACE15DD275B55EF00FC966F /* EditBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE15DC275B55EF00FC966F /* EditBillVC.swift */; };
 		1ACE15DF275B614E00FC966F /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE15DE275B614E00FC966F /* CurrencyModel.swift */; };
 		1ACE15E1275B627A00FC966F /* CurrencySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE15E0275B627A00FC966F /* CurrencySearchVC.swift */; };
+		1AE8127F275CC31900963A61 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE8127E275CC31900963A61 /* Category.swift */; };
+		1AEEFAD6275D1D7C00EDDFA2 /* CategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEEFAD5275D1D7C00EDDFA2 /* CategoriesVC.swift */; };
 		C4B34BBDEA463B1E67363A09 /* Pods_Money_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128F7F4CAC196D51EC82BA56 /* Pods_Money_Manager.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		1ACE15DC275B55EF00FC966F /* EditBillVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditBillVC.swift; sourceTree = "<group>"; };
 		1ACE15DE275B614E00FC966F /* CurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		1ACE15E0275B627A00FC966F /* CurrencySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchVC.swift; sourceTree = "<group>"; };
+		1AE8127E275CC31900963A61 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		1AEEFAD5275D1D7C00EDDFA2 /* CategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVC.swift; sourceTree = "<group>"; };
 		2DB570E466796FC362AC3B0E /* Pods-Money Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Manager.debug.xcconfig"; path = "Target Support Files/Pods-Money Manager/Pods-Money Manager.debug.xcconfig"; sourceTree = "<group>"; };
 		326E851AE3DC308F1E381077 /* Pods-Money Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Manager.release.xcconfig"; path = "Target Support Files/Pods-Money Manager/Pods-Money Manager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +139,7 @@
 				1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */,
 				1ACE15DC275B55EF00FC966F /* EditBillVC.swift */,
 				1ACE15E0275B627A00FC966F /* CurrencySearchVC.swift */,
+				1AEEFAD5275D1D7C00EDDFA2 /* CategoriesVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 			children = (
 				1A6497AD2752182C00DA1027 /* Transaction.swift */,
 				1A9A5BA227515C8D00EE2E92 /* Bill.swift */,
+				1AE8127E275CC31900963A61 /* Category.swift */,
 				1A9A5BA427515CA300EE2E92 /* RealmService.swift */,
 			);
 			path = Data;
@@ -307,6 +313,7 @@
 				1ACE15E1275B627A00FC966F /* CurrencySearchVC.swift in Sources */,
 				1A6497B0275230D500DA1027 /* CategoryCell.swift in Sources */,
 				1A70B80A275207210016986B /* SelectBillVC.swift in Sources */,
+				1AEEFAD6275D1D7C00EDDFA2 /* CategoriesVC.swift in Sources */,
 				1A6629B62750A45800E67D37 /* MainVC.swift in Sources */,
 				1A6497AE2752182C00DA1027 /* Transaction.swift in Sources */,
 				1A6629B22750A45800E67D37 /* AppDelegate.swift in Sources */,
@@ -321,6 +328,7 @@
 				1A3480B92751089D009FDED2 /* AddBillVC.swift in Sources */,
 				1ACC29E7275633A4000C53F2 /* TransactionsSummaryVC.swift in Sources */,
 				1A9A5BA527515CA300EE2E92 /* RealmService.swift in Sources */,
+				1AE8127F275CC31900963A61 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

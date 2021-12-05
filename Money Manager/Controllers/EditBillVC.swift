@@ -48,10 +48,13 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
             numberPadView.isHidden = true
             var textField = UITextField()
             let alert = UIAlertController(title: "Новое название", message: "", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Изменить", style: .default) { (action) in
+            let change = UIAlertAction(title: "Изменить", style: .default) { (change) in
                 self.billName.text = textField.text
             }
-            alert.addAction(action)
+            let cancel = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+            
+            alert.addAction(cancel)
+            alert.addAction(change)
             alert.addTextField { (field) in
                 textField = field
                 textField.placeholder = "Введите название"
@@ -67,6 +70,8 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
         if indexPath.row == 2 {
             if numberPadView.isHidden {
             numberPadView.isHidden = false
+            } else {
+                numberPadView.isHidden = true
             }
             let currentCell = tableView.cellForRow(at: indexPath)
             currentCell?.isSelected = false
@@ -97,5 +102,9 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
                                     "currency": billCurrency.text,
                                     "budget": Float(billCapital.text ?? "0.0")]
         RealmService.shared.update(billForEdit, with: dict)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
     }
 }
