@@ -19,6 +19,11 @@ class SelectBillVC: UITableViewController {
         
         let realm = RealmService.shared.realm
         bill = realm.objects(Bill.self)
+        
+        var frame = CGRect.zero
+        frame.size.height = .leastNormalMagnitude
+        tableView.tableHeaderView = UIView(frame: frame)
+        tableView.tableFooterView = UIView(frame: frame)
     }
     
     weak var delegate: MainVCDelegate?
