@@ -16,9 +16,14 @@ class AddTransactionVC: UIViewController {
     @IBOutlet weak var categoriesCollection: UICollectionView!
     
     let numberPadManager = NumberPadManager()
-    var transaction: Results<Transaction>!
+    //var transaction: Results<Transaction>!
     var currentBill: Bill?
     var categoryName = ""
+    var textField = UITextField()
+    var categories: Results<Category>!
+    var categoriesSum: Int = 0
+    var notificationToken: NotificationToken?
+    var indexPathsForSelectedItems: [IndexPath]?
     
     var categoryArray = ["+ Добавить", "Развлечения", "Долги", "Автомобиль", "Ребёнок", "Музыка", "Кредит", "Транспорт"]
     
@@ -27,28 +32,31 @@ class AddTransactionVC: UIViewController {
         notesTextField.delegate = self
         categoriesCollection.delegate = self
         categoriesCollection.dataSource = self
-        
+       
         let realm = RealmService.shared.realm
-        transaction = realm.objects(Transaction.self)
+        categories = realm.objects(Category.self)
         
+        notificationToken = realm.observe({ notification, realm in
+            self.categoriesCollection.reloadData()
+        })
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        DispatchQueue.main.async {
-            self.categoriesCollection.selectItem(at: IndexPath(item: 1, section: 0), animated: true, scrollPosition: .bottom)
-            self.collectionView(self.categoriesCollection, didSelectItemAt: IndexPath(item: 1, section: 0))
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        notificationToken?.invalidate()
     }
     
     @IBAction func addButtonPressed(_ sender: UIButton) {
+        if categoryName == "" {
+            print("u must select category")
+        } else {
         let valueString = valueLabel.text!
         let newValue = Float(valueString) ?? 0.0
-        
         let newTransaction = Transaction(value: newValue, note: notesTextField.text, transactionType: segmentPicker.selectedSegmentIndex, creationDate: Date(), category: categoryName)
         RealmService.shared.append(newTransaction, currentBill!)
         navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    @IBAction func typeChanged(_ sender: UISegmentedControl) {
+        categoriesCollection.reloadData()
     }
     
     @IBAction func numberButtons(_ sender: UIButton) {
@@ -70,11 +78,39 @@ extension AddTransactionVC: UITextFieldDelegate {
 extension AddTransactionVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderColor = #colorLiteral(red: 1, green: 0.8032061458, blue: 0.2743474245, alpha: 1)
-        cell?.layer.borderWidth = 2
-        cell?.layer.cornerRadius = 10
-        cell?.isSelected = true
-        categoryName = categoryArray[indexPath.row]
+        
+        if indexPath.row == categoriesSum - 1 {
+            var textField = UITextField()
+            let alert = UIAlertController(title: "Новая категория", message: "", preferredStyle: .alert)
+            let change = UIAlertAction(title: "Добавить", style: .default) { (change) in
+                let newCategory = Category(textField.text!, self.segmentPicker.selectedSegmentIndex)
+                RealmService.shared.create(newCategory)
+            }
+            let cancel = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+            
+            alert.addAction(cancel)
+            alert.addAction(change)
+            change.isEnabled = false
+            
+            alert.addTextField { (field) in
+                textField = field
+                textField.placeholder = "Введите название"
+                NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
+                                                        {_ in
+                    let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                    let textIsNotEmpty = textCount > 0
+                    
+                    change.isEnabled = textIsNotEmpty
+                }) }
+            
+            present(alert, animated: true, completion: nil)
+        } else {
+            cell?.layer.borderColor = #colorLiteral(red: 1, green: 0.8032061458, blue: 0.2743474245, alpha: 1)
+            cell?.layer.borderWidth = 2
+            cell?.layer.cornerRadius = 10
+            cell?.isSelected = true
+            categoryName = categories.filter("type == %@", segmentPicker.selectedSegmentIndex)[indexPath.row].name
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -87,12 +123,33 @@ extension AddTransactionVC: UICollectionViewDelegate {
 extension AddTransactionVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryArray.count
+        if segmentPicker.selectedSegmentIndex == 0 {
+            categoriesSum = categories.filter("type == %@", 0).count + 1
+            return categoriesSum
+        } else {
+            categoriesSum = categories.filter("type == %@", 1).count + 1
+            return categoriesSum
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categories", for: indexPath) as! CategoryCell
-        cell.nameOfCategory.text = categoryArray[indexPath.row]
+        
+        if segmentPicker.selectedSegmentIndex == 0 {
+            if indexPath.row == categoriesSum - 1 {
+                cell.nameOfCategory.text = "+ Добавить"
+            } else {
+                cell.nameOfCategory.text = categories.filter("type == %@", 0)[indexPath.row].name
+            }
+        }
+        if segmentPicker.selectedSegmentIndex == 1 {
+            if indexPath.row == categoriesSum - 1 {
+                cell.nameOfCategory.text = "+ Добавить"
+            } else {
+                cell.nameOfCategory.text = categories.filter("type == %@", 1)[indexPath.row].name
+            }
+        }
+        
         return cell
     }
 }
