@@ -22,8 +22,8 @@ class MainVC: UIViewController, MainVCDelegate {
     var bill: Results<Bill>!
     var transactionObject: List<Transaction>!
     var billIndex: Int?
-    var sumOfIncome: Float = 0.0
-    var sumOfExpenses: Float = 0.0
+    //var sumOfIncome: Float = 0.0
+    //var sumOfExpenses: Float = 0.0
     var billValueFloat: Float = 0.0
     var billSymbol = ""
     var groupedItems = [Date:Results<Transaction>]()
@@ -139,8 +139,8 @@ class MainVC: UIViewController, MainVCDelegate {
                 results[beginningOfDay] = items!.filter("creationDate >= %@ AND creationDate <= %@", beginningOfDay, endOfDay)
             })
             
-            sumOfIncome = RealmService.shared.sumOfIncome(object: transactionObject)
-            sumOfExpenses = RealmService.shared.sumOfExpenses(object: transactionObject)
+            var sumOfIncome = RealmService.shared.sumOfIncome(object: transactionObject)
+            var sumOfExpenses = RealmService.shared.sumOfExpenses(object: transactionObject)
             expensesLabel.text = sumOfExpenses.floatToString(sumOfExpenses) + billSymbol
             incomeLabel.text = sumOfIncome.floatToString(sumOfIncome) + billSymbol
             billValueFloat = sumOfIncome - sumOfExpenses
@@ -209,5 +209,29 @@ extension MainVC: UITableViewDataSource {
             cell.transactionType.image = UIImage(systemName: "arrow.up")
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    {
+        let cornerRadius = 10
+        var corners: UIRectCorner = []
+
+        if indexPath.row == 0
+        {
+            corners.update(with: .topLeft)
+            corners.update(with: .topRight)
+        }
+
+        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
+        {
+            corners.update(with: .bottomLeft)
+            corners.update(with: .bottomRight)
+        }
+
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = UIBezierPath(roundedRect: cell.bounds,
+                                      byRoundingCorners: corners,
+                                      cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
+        cell.layer.mask = maskLayer
     }
 }
