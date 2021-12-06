@@ -8,10 +8,15 @@
 import UIKit
 import RealmSwift
 
+protocol CategoriesDelegate {
+    func getCategoryInfo(category: Category)
+}
+
 class CategoriesVC: UITableViewController {
 
     @IBOutlet weak var type: UISegmentedControl!
     var categories: Results<Category>!
+    var delegate: CategoriesDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,5 +49,10 @@ class CategoriesVC: UITableViewController {
         }
         cell.contentConfiguration = content
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.getCategoryInfo(category: categories.filter("type == %@", type.selectedSegmentIndex)[indexPath.row])
+        navigationController?.popViewController(animated: true)
     }
 }

@@ -11,6 +11,7 @@
 		1A3480BB275147C9009FDED2 /* AddCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */; };
 		1A3480BD27515346009FDED2 /* AddBudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BC27515346009FDED2 /* AddBudgetVC.swift */; };
 		1A391E442754EBC700757EBB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A391E432754EBC700757EBB /* Extensions.swift */; };
+		1A4D5D59275E325300697B31 /* EditTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D5D58275E325300697B31 /* EditTransactionVC.swift */; };
 		1A6497AA27520FC000DA1027 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497A927520FC000DA1027 /* AddTransactionVC.swift */; };
 		1A6497AC2752163D00DA1027 /* NumberPadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497AB2752163D00DA1027 /* NumberPadManager.swift */; };
 		1A6497AE2752182C00DA1027 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497AD2752182C00DA1027 /* Transaction.swift */; };
@@ -42,6 +43,7 @@
 		1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrencyVC.swift; sourceTree = "<group>"; };
 		1A3480BC27515346009FDED2 /* AddBudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetVC.swift; sourceTree = "<group>"; };
 		1A391E432754EBC700757EBB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1A4D5D58275E325300697B31 /* EditTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionVC.swift; sourceTree = "<group>"; };
 		1A6497A927520FC000DA1027 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
 		1A6497AB2752163D00DA1027 /* NumberPadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadManager.swift; sourceTree = "<group>"; };
 		1A6497AD2752182C00DA1027 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				1ACE15DC275B55EF00FC966F /* EditBillVC.swift */,
 				1ACE15E0275B627A00FC966F /* CurrencySearchVC.swift */,
 				1AEEFAD5275D1D7C00EDDFA2 /* CategoriesVC.swift */,
+				1A4D5D58275E325300697B31 /* EditTransactionVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				1ACC29E7275633A4000C53F2 /* TransactionsSummaryVC.swift in Sources */,
 				1A9A5BA527515CA300EE2E92 /* RealmService.swift in Sources */,
 				1AE8127F275CC31900963A61 /* Category.swift in Sources */,
+				1A4D5D59275E325300697B31 /* EditTransactionVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
