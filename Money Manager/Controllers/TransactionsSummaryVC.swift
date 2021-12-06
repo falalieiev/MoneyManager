@@ -27,12 +27,22 @@ class TransactionsSummaryVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         arrayExpenses = transactionObject.filter("transactionType == %@", 0).distinct(by: ["category"]).value(forKey: "category") as! [String]
         arrayIncome = transactionObject.filter("transactionType == %@", 1).distinct(by: ["category"]).value(forKey: "category") as! [String]
-        
+        if segmentControl.selectedSegmentIndex == 0 {
         sortedDictionary = RealmService.shared.transactionsByOrder(array: arrayExpenses, object: transactionObject, type: 0)
-        
+        } else {
+            sortedDictionary = RealmService.shared.transactionsByOrder(array: arrayIncome, object: transactionObject, type: 1)
+        }
+        if sortedDictionary.isEmpty {
+            chartView.data = nil
+        }
+        entries = []
+        tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +57,9 @@ class TransactionsSummaryVC: UIViewController {
         } else {
             sortedDictionary = []
             sortedDictionary = RealmService.shared.transactionsByOrder(array: arrayIncome, object: transactionObject, type: segmentControl.selectedSegmentIndex)
+        }
+        if sortedDictionary.isEmpty {
+            chartView.data = nil
         }
         entries = []
         tableView.reloadData()
@@ -63,7 +76,7 @@ class TransactionsSummaryVC: UIViewController {
         } else {
             set.label = "Доходы"
         }
-        set.stackLabels = ["sad", "asd"]
+        //set.stackLabels = ["sad", "asd"]
         let data = BarChartData(dataSet: set)
         chartView.data = data
     }
@@ -85,7 +98,7 @@ extension TransactionsSummaryVC: UITableViewDelegate {
 extension TransactionsSummaryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TransactionCell
-        
+
         let keysArraySorted = Array(sortedDictionary.map({ $0.key }))
         let valuesArraySorted = Array(sortedDictionary.map({ $0.value }))
         cell.transactionName.text = keysArraySorted[indexPath.row]
