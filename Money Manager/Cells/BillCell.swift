@@ -15,20 +15,19 @@ class BillCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
-    func configureBill(with bill: Bill, sum: Float) {
-        let billValueString = String(bill.budget + sum)
-        billColor.textColor = .red
+    func configureBill(with bill: Bill, sum: Float, _ color: UIColor) {
+        var billValueFloat = bill.budget + sum
+        billColor.textColor = color
         billName.text = bill.name
-        billValue.text = bill.currency + billValueString
+        billValue.text = billValueFloat.floatToString() + bill.currency.components(separatedBy: "- ")[1]
     }
 
 }

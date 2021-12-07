@@ -81,6 +81,7 @@ class EditTransactionVC: UITableViewController, CategoriesDelegate {
             numberPadView.isHidden = true
             currentCell?.isSelected = false
             var textField = UITextField()
+            textField.autocapitalizationType = .sentences
             let alert = UIAlertController(title: "Заметка", message: "", preferredStyle: .alert)
             let change = UIAlertAction(title: "Изменить", style: .default) { (change) in
                 self.note.text = textField.text

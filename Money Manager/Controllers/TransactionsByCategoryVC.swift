@@ -12,6 +12,8 @@ class TransactionsByCategoryVC: UITableViewController {
     
     var operations: Results<Transaction>!
     var transactionForEdit: Transaction!
+    var billSymbol = ""
+    let colors = Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,7 @@ class TransactionsByCategoryVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //tableView.reloadData()
+        tableView.reloadData()
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -37,8 +39,10 @@ class TransactionsByCategoryVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "operations", for: indexPath) as! TransactionCell
+        var value = operations.sorted(byKeyPath: "creationDate", ascending: false)[indexPath.row].value
         cell.transactionName.text = operations.sorted(byKeyPath: "creationDate", ascending: false)[indexPath.row].category
-        cell.transactionValue.text = String(operations.sorted(byKeyPath: "creationDate", ascending: false)[indexPath.row].value)
+        cell.transactionValue.text = value.floatToString() + billSymbol
+        cell.transactionColor.textColor = colors.colors[indexPath.row % colors.colors.count]
         return cell
     }
     

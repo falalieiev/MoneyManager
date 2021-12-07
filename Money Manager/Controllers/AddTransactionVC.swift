@@ -94,6 +94,7 @@ extension AddTransactionVC: UICollectionViewDelegate {
             
             alert.addTextField { (field) in
                 textField = field
+                textField.autocapitalizationType = .sentences
                 textField.placeholder = "Введите название"
                 NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
                                                         {_ in

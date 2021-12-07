@@ -21,6 +21,8 @@ class TransactionsSummaryVC: UIViewController {
     var arrayIncome: [String] = []
     var sortedDictionary: [Dictionary<String, Float>.Element] = []
     var operationsByCategory: Results<Transaction>!
+    var billSymbol = ""
+    let colors = Colors()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,7 @@ class TransactionsSummaryVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! TransactionsByCategoryVC
         destinationVC.operations = operationsByCategory
+        destinationVC.billSymbol = billSymbol
     }
     
     @IBAction func transactionTypeChanged(_ sender: UISegmentedControl) {
@@ -69,19 +72,11 @@ class TransactionsSummaryVC: UIViewController {
         chartView.chartSetting(chartView)
         entries.append(BarChartDataEntry(x: x, y: y))
         let set = BarChartDataSet(entries: entries)
-        set.colors = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.green]
-        if segmentControl.selectedSegmentIndex == 0 {
-            set.label = "Расходы"
-            
-        } else {
-            set.label = "Доходы"
-        }
-        //set.stackLabels = ["sad", "asd"]
+        set.colors = colors.colors
+        
         let data = BarChartData(dataSet: set)
         chartView.data = data
     }
-    
-    
     
 }
 
@@ -100,12 +95,15 @@ extension TransactionsSummaryVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TransactionCell
 
         let keysArraySorted = Array(sortedDictionary.map({ $0.key }))
-        let valuesArraySorted = Array(sortedDictionary.map({ $0.value }))
+        var valuesArraySorted = Array(sortedDictionary.map({ $0.value }))
         cell.transactionName.text = keysArraySorted[indexPath.row]
-        cell.transactionValue.text = String(valuesArraySorted[indexPath.row])
+        cell.transactionValue.text = valuesArraySorted[indexPath.row].floatToString() + billSymbol
+        cell.transactionColor.textColor = colors.colors[indexPath.row % colors.colors.count]
         
-        createChart(x: Double(indexPath.row + 1), y: Double(valuesArraySorted[indexPath.row]))
-        
+        if entries.count < 12 {
+            let yValue = valuesArraySorted[indexPath.row].rounded()
+            createChart(x: Double(indexPath.row + 1), y: Double(yValue))
+        }
         return cell
     }
     
@@ -116,6 +114,4 @@ extension TransactionsSummaryVC: UITableViewDataSource {
             return arrayIncome.count
         }
     }
-    
 }
-

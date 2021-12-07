@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CurrencyModel {
+class CurrencyModel {
     var currencyArray = ["(AED) United Arab Emirates dirham - د.إ",
                          "(AFN) Afghan afghani - ؋",
                          "(ALL) Albanian lek - L",

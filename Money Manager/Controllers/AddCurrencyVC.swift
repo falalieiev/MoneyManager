@@ -75,7 +75,7 @@ extension AddCurrencyVC: UIPickerViewDataSource {
 
 extension AddCurrencyVC: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currencySymbol = currencyModel.currencyArray[row].components(separatedBy: "- ")[1]
+        currencySymbol = currencyModel.currencyArray[row]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

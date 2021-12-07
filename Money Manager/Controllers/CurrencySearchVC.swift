@@ -16,7 +16,7 @@ class CurrencySearchVC: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     
     weak var delegate: SearchCurrencyDelegate?
-    var currencyModel = CurrencyModel()
+    let currencyModel = CurrencyModel()
     var data: [String]!
     
     override func viewDidLoad() {

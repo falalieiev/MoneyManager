@@ -45,7 +45,6 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            numberPadView.isHidden = true
             var textField = UITextField()
             let alert = UIAlertController(title: "Новое название", message: "", preferredStyle: .alert)
             let change = UIAlertAction(title: "Изменить", style: .default) { (change) in
@@ -55,10 +54,20 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
             
             alert.addAction(cancel)
             alert.addAction(change)
+            change.isEnabled = false
+            
             alert.addTextField { (field) in
                 textField = field
+                textField.autocapitalizationType = .sentences
                 textField.placeholder = "Введите название"
-            }
+                NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: textField, queue: OperationQueue.main, using:
+                                                        {_ in
+                    let textCount = textField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                    let textIsNotEmpty = textCount > 0
+                    
+                    change.isEnabled = textIsNotEmpty
+                }) }
+            
             present(alert, animated: true, completion: nil)
         }
         
@@ -102,6 +111,7 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
                                     "currency": billCurrency.text,
                                     "budget": Float(billCapital.text ?? "0.0")]
         RealmService.shared.update(billForEdit, with: dict)
+        navigationController?.popViewController(animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

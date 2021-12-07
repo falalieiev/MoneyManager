@@ -32,6 +32,7 @@ class SelectBillVC: UITableViewController {
     var billIndexPassed: Int?
     var sum1: Float = 0.0
     var billForEdit: Bill!
+    let colors = Colors()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,7 +60,7 @@ class SelectBillVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "billCell", for: indexPath) as! BillCell
         transactionObject = bill[indexPath.row].transaction
         sum1 = RealmService.shared.sumOfAllTransactions(object: transactionObject)
-        cell.configureBill(with: bill[indexPath.row], sum: sum1)
+        cell.configureBill(with: bill[indexPath.row], sum: sum1, colors.colors[indexPath.row % colors.colors.count])
         return cell
     }
     
