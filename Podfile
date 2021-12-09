@@ -8,5 +8,6 @@ target 'Money Manager' do
   # Pods for Money Manager
 pod 'RealmSwift', '~>10'
 pod 'Charts'
+pod 'SideMenu', '~> 6.0'
 
 end
