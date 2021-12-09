@@ -34,6 +34,9 @@ class EditTransactionVC: UITableViewController, CategoriesDelegate {
         value.text = String(transactionForEdit.value)
         categoryLabel.text = transactionForEdit.category
         tableView.allowsSelection = false
+        
+        tableView.sectionHeaderHeight = 1
+        tableView.sectionFooterHeight = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +103,7 @@ class EditTransactionVC: UITableViewController, CategoriesDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "categories" {
-            let destinationVC = segue.destination as! CategoriesVC
+            let destinationVC = segue.destination as! CategoryVC
             destinationVC.delegate = self
         }
     }

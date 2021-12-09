@@ -17,17 +17,22 @@ class TransactionsByCategoryVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = operations.first?.value(forKey: "category") as? String
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        self.title = operations.first?.value(forKey: "category") as? String
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        if operations.count == 0 {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.title = ""
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
@@ -54,7 +59,18 @@ class TransactionsByCategoryVC: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! EditTransactionVC
         destinationVC.transactionForEdit = transactionForEdit
-        //destinationVC.barItem.title = ""
-        //destinationVC.title = ""
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let trashAction = UIContextualAction(style: .destructive, title:  "Trash", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            RealmService.shared.delete(self.operations.sorted(byKeyPath: "creationDate", ascending: false)[indexPath.row])
+            tableView.reloadData()
+            success(true)
+        })
+        trashAction.backgroundColor = .red
+        trashAction.image = UIImage(systemName: "trash")
+        
+        return UISwipeActionsConfiguration(actions: [trashAction])
     }
 }

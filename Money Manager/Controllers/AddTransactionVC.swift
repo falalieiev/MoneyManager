@@ -16,7 +16,6 @@ class AddTransactionVC: UIViewController {
     @IBOutlet weak var categoriesCollection: UICollectionView!
     
     let numberPadManager = NumberPadManager()
-    //var transaction: Results<Transaction>!
     var currentBill: Bill?
     var categoryName = ""
     var textField = UITextField()
@@ -24,8 +23,6 @@ class AddTransactionVC: UIViewController {
     var categoriesSum: Int = 0
     var notificationToken: NotificationToken?
     var indexPathsForSelectedItems: [IndexPath]?
-    
-    var categoryArray = ["+ Добавить", "Развлечения", "Долги", "Автомобиль", "Ребёнок", "Музыка", "Кредит", "Транспорт"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +37,7 @@ class AddTransactionVC: UIViewController {
             self.categoriesCollection.reloadData()
         })
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         notificationToken?.invalidate()
     }
@@ -116,7 +114,7 @@ extension AddTransactionVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.borderColor = UIColor.clear.cgColor
+        cell?.layer.borderColor = UIColor(named: "text")?.cgColor
         cell?.isSelected = false
     }
 }
@@ -135,7 +133,9 @@ extension AddTransactionVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categories", for: indexPath) as! CategoryCell
-        
+        cell.layer.borderWidth = 2
+        cell.layer.cornerRadius = 10
+        cell.layer.borderColor = UIColor(named: "text")?.cgColor
         if segmentPicker.selectedSegmentIndex == 0 {
             if indexPath.row == categoriesSum - 1 {
                 cell.nameOfCategory.text = "+ Добавить"

@@ -11,6 +11,8 @@
 		1A3480BB275147C9009FDED2 /* AddCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */; };
 		1A3480BD27515346009FDED2 /* AddBudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BC27515346009FDED2 /* AddBudgetVC.swift */; };
 		1A391E442754EBC700757EBB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A391E432754EBC700757EBB /* Extensions.swift */; };
+		1A3B1EF127624640005C1D0E /* UserDefaultsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B1EF027624640005C1D0E /* UserDefaultsModel.swift */; };
+		1A3B1EF527625C38005C1D0E /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3B1EF427625C38005C1D0E /* CategoryVC.swift */; };
 		1A4D5D59275E325300697B31 /* EditTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D5D58275E325300697B31 /* EditTransactionVC.swift */; };
 		1A6497AA27520FC000DA1027 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497A927520FC000DA1027 /* AddTransactionVC.swift */; };
 		1A6497AC2752163D00DA1027 /* NumberPadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6497AB2752163D00DA1027 /* NumberPadManager.swift */; };
@@ -26,6 +28,7 @@
 		1A702B362758BBB900DE41EE /* TransactionsByCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */; };
 		1A70B806275206A30016986B /* BillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70B805275206A30016986B /* BillCell.swift */; };
 		1A70B80A275207210016986B /* SelectBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70B809275207210016986B /* SelectBillVC.swift */; };
+		1A895BC327613A13007E2F4B /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A895BC227613A13007E2F4B /* SideMenuVC.swift */; };
 		1A9A5BA327515C8D00EE2E92 /* Bill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A5BA227515C8D00EE2E92 /* Bill.swift */; };
 		1A9A5BA527515CA300EE2E92 /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9A5BA427515CA300EE2E92 /* RealmService.swift */; };
 		1ACC29E7275633A4000C53F2 /* TransactionsSummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC29E6275633A4000C53F2 /* TransactionsSummaryVC.swift */; };
@@ -34,7 +37,6 @@
 		1ACE15E1275B627A00FC966F /* CurrencySearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACE15E0275B627A00FC966F /* CurrencySearchVC.swift */; };
 		1ACF3625275FB049007E03A0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF3624275FB049007E03A0 /* Colors.swift */; };
 		1AE8127F275CC31900963A61 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE8127E275CC31900963A61 /* Category.swift */; };
-		1AEEFAD6275D1D7C00EDDFA2 /* CategoriesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEEFAD5275D1D7C00EDDFA2 /* CategoriesVC.swift */; };
 		C4B34BBDEA463B1E67363A09 /* Pods_Money_Manager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128F7F4CAC196D51EC82BA56 /* Pods_Money_Manager.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrencyVC.swift; sourceTree = "<group>"; };
 		1A3480BC27515346009FDED2 /* AddBudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetVC.swift; sourceTree = "<group>"; };
 		1A391E432754EBC700757EBB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1A3B1EF027624640005C1D0E /* UserDefaultsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsModel.swift; sourceTree = "<group>"; };
+		1A3B1EF427625C38005C1D0E /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		1A4D5D58275E325300697B31 /* EditTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionVC.swift; sourceTree = "<group>"; };
 		1A6497A927520FC000DA1027 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
 		1A6497AB2752163D00DA1027 /* NumberPadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberPadManager.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsByCategoryVC.swift; sourceTree = "<group>"; };
 		1A70B805275206A30016986B /* BillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillCell.swift; sourceTree = "<group>"; };
 		1A70B809275207210016986B /* SelectBillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBillVC.swift; sourceTree = "<group>"; };
+		1A895BC227613A13007E2F4B /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		1A9A5BA227515C8D00EE2E92 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		1A9A5BA427515CA300EE2E92 /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
 		1ACC29E6275633A4000C53F2 /* TransactionsSummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsSummaryVC.swift; sourceTree = "<group>"; };
@@ -69,7 +74,6 @@
 		1ACE15E0275B627A00FC966F /* CurrencySearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySearchVC.swift; sourceTree = "<group>"; };
 		1ACF3624275FB049007E03A0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1AE8127E275CC31900963A61 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		1AEEFAD5275D1D7C00EDDFA2 /* CategoriesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesVC.swift; sourceTree = "<group>"; };
 		2DB570E466796FC362AC3B0E /* Pods-Money Manager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Manager.debug.xcconfig"; path = "Target Support Files/Pods-Money Manager/Pods-Money Manager.debug.xcconfig"; sourceTree = "<group>"; };
 		326E851AE3DC308F1E381077 /* Pods-Money Manager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Money Manager.release.xcconfig"; path = "Target Support Files/Pods-Money Manager/Pods-Money Manager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,8 +147,9 @@
 				1A702B352758BBB900DE41EE /* TransactionsByCategoryVC.swift */,
 				1ACE15DC275B55EF00FC966F /* EditBillVC.swift */,
 				1ACE15E0275B627A00FC966F /* CurrencySearchVC.swift */,
-				1AEEFAD5275D1D7C00EDDFA2 /* CategoriesVC.swift */,
 				1A4D5D58275E325300697B31 /* EditTransactionVC.swift */,
+				1A895BC227613A13007E2F4B /* SideMenuVC.swift */,
+				1A3B1EF427625C38005C1D0E /* CategoryVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 				1A9A5BA227515C8D00EE2E92 /* Bill.swift */,
 				1AE8127E275CC31900963A61 /* Category.swift */,
 				1A9A5BA427515CA300EE2E92 /* RealmService.swift */,
+				1A3B1EF027624640005C1D0E /* UserDefaultsModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -320,23 +326,25 @@
 				1A6497B0275230D500DA1027 /* CategoryCell.swift in Sources */,
 				1ACF3625275FB049007E03A0 /* Colors.swift in Sources */,
 				1A70B80A275207210016986B /* SelectBillVC.swift in Sources */,
-				1AEEFAD6275D1D7C00EDDFA2 /* CategoriesVC.swift in Sources */,
 				1A6629B62750A45800E67D37 /* MainVC.swift in Sources */,
 				1A6497AE2752182C00DA1027 /* Transaction.swift in Sources */,
 				1A6629B22750A45800E67D37 /* AppDelegate.swift in Sources */,
 				1A6497B22752477900DA1027 /* TransactionCell.swift in Sources */,
 				1ACE15DF275B614E00FC966F /* CurrencyModel.swift in Sources */,
+				1A3B1EF527625C38005C1D0E /* CategoryVC.swift in Sources */,
 				1A9A5BA327515C8D00EE2E92 /* Bill.swift in Sources */,
 				1A702B362758BBB900DE41EE /* TransactionsByCategoryVC.swift in Sources */,
 				1A6629B42750A45800E67D37 /* SceneDelegate.swift in Sources */,
 				1A391E442754EBC700757EBB /* Extensions.swift in Sources */,
 				1A70B806275206A30016986B /* BillCell.swift in Sources */,
 				1A6497AA27520FC000DA1027 /* AddTransactionVC.swift in Sources */,
+				1A895BC327613A13007E2F4B /* SideMenuVC.swift in Sources */,
 				1A3480B92751089D009FDED2 /* AddBillVC.swift in Sources */,
 				1ACC29E7275633A4000C53F2 /* TransactionsSummaryVC.swift in Sources */,
 				1A9A5BA527515CA300EE2E92 /* RealmService.swift in Sources */,
 				1AE8127F275CC31900963A61 /* Category.swift in Sources */,
 				1A4D5D59275E325300697B31 /* EditTransactionVC.swift in Sources */,
+				1A3B1EF127624640005C1D0E /* UserDefaultsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

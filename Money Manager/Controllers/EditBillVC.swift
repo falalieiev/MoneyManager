@@ -44,7 +44,9 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath)
         if indexPath.row == 0 {
+            numberPadView.isHidden = true
             var textField = UITextField()
             let alert = UIAlertController(title: "Новое название", message: "", preferredStyle: .alert)
             let change = UIAlertAction(title: "Изменить", style: .default) { (change) in
@@ -67,7 +69,7 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
                     
                     change.isEnabled = textIsNotEmpty
                 }) }
-            
+            currentCell?.isSelected = false
             present(alert, animated: true, completion: nil)
         }
         
@@ -82,7 +84,6 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
             } else {
                 numberPadView.isHidden = true
             }
-            let currentCell = tableView.cellForRow(at: indexPath)
             currentCell?.isSelected = false
         }
     }

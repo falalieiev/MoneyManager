@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import SideMenu
 
 class MainVC: UIViewController, MainVCDelegate {
     
@@ -18,7 +19,6 @@ class MainVC: UIViewController, MainVCDelegate {
     @IBOutlet weak var expensesLabel: UILabel!
     @IBOutlet weak var incomeLabel: UILabel!
     @IBOutlet weak var summaryView: UIStackView!
-    @IBOutlet weak var sideMenu: UIView!
     
     var bill: Results<Bill>!
     var transactionObject: List<Transaction>!
@@ -44,11 +44,29 @@ class MainVC: UIViewController, MainVCDelegate {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
         loadTransactions()
         
-        tableView.sectionHeaderTopPadding = 0
+        sideMenuSettings()
+        
+        tableView.sectionFooterHeight = 1
+        tableView.sectionHeaderHeight = 29
+        
+        let formate = Date().getFormattedDate(format: "E, d MMMM")
+        self.title = formate
     }
+    
+    func sideMenuSettings() {
+        SideMenuManager.default.leftMenuNavigationController = storyboard?.instantiateViewController(withIdentifier: "sideMenu") as? SideMenuNavigationController
+        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: view, forMenu: .left)
+        var settings = SideMenuSettings()
+        settings.presentationStyle = .viewSlideOutMenuIn
+        settings.menuWidth = 300
+        settings.presentationStyle.presentingEndAlpha = 0.5
+        SideMenuManager.default.leftMenuNavigationController?.settings = settings
+    }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         if billIndex == nil {
@@ -78,14 +96,6 @@ class MainVC: UIViewController, MainVCDelegate {
         }
     }
     
-    @IBAction func sideMenuPressed(_ sender: UIBarButtonItem) {
-        if sideMenu.isHidden {
-            sideMenu.isHidden = false
-        } else {
-            sideMenu.isHidden = true
-        }
-    }
-    
     @objc func summaryTapped(sender : UITapGestureRecognizer) {
         if bill.count != 0 {
             performSegue(withIdentifier: "transactionObserve", sender: sender)
@@ -95,7 +105,8 @@ class MainVC: UIViewController, MainVCDelegate {
     func configureBill(with bill: Bill) {
         billImage.image = UIImage(systemName: "creditcard")
         billName.text = bill.name
-        billValue.text = String(bill.budget + billValueFloat) + bill.currency.components(separatedBy: "- ")[1]
+        var billSum = bill.budget + billValueFloat
+        billValue.text = billSum.floatToString() + bill.currency.components(separatedBy: "- ")[1]
         billSymbol = bill.currency.components(separatedBy: "- ")[1]
     }
     
@@ -117,6 +128,10 @@ class MainVC: UIViewController, MainVCDelegate {
         } else if segue.identifier == "transactionInfo" {
             let transactionInfo = segue.destination as! EditTransactionVC
             transactionInfo.transactionForEdit = transactionForEdit
+        } else if segue.identifier == "sideMenuSettings" {
+            let sideMenuNavigationController = segue.destination as? SideMenuNavigationController
+            sideMenuNavigationController?.presentationStyle = .viewSlideOutMenuIn
+            sideMenuNavigationController?.presentationStyle.presentingEndAlpha = 0.5
         }
     }
     
@@ -204,6 +219,7 @@ extension MainVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "transaction", for: indexPath) as! TransactionCell
+        
         let itemsForDate = groupedItems[itemDates[indexPath.section]]!
         cell.transactionName.text = "\(Array(itemsForDate)[indexPath.row].category)"
         cell.transactionColor.textColor = colors.colors[indexPath.row % colors.colors.count]
@@ -218,29 +234,5 @@ extension MainVC: UITableViewDataSource {
             cell.transactionValue.text = "\(value.floatToString())\(billSymbol)"
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
-    {
-        let cornerRadius = 10
-        var corners: UIRectCorner = []
-        
-        if indexPath.row == 0
-        {
-            corners.update(with: .topLeft)
-            corners.update(with: .topRight)
-        }
-        
-        if indexPath.row == tableView.numberOfRows(inSection: indexPath.section) - 1
-        {
-            corners.update(with: .bottomLeft)
-            corners.update(with: .bottomRight)
-        }
-        
-        let maskLayer = CAShapeLayer()
-        maskLayer.path = UIBezierPath(roundedRect: cell.bounds,
-                                      byRoundingCorners: corners,
-                                      cornerRadii: CGSize(width: cornerRadius, height: cornerRadius)).cgPath
-        cell.layer.mask = maskLayer
     }
 }
