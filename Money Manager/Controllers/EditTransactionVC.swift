@@ -24,6 +24,8 @@ class EditTransactionVC: UITableViewController, CategoriesDelegate {
     var categoryInfo: Category?
     let empty = ""
     
+    //MARK: - View LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if transactionForEdit.note == "" {
@@ -54,13 +56,23 @@ class EditTransactionVC: UITableViewController, CategoriesDelegate {
         numberPadView.removeFromSuperview()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "categories" {
+            let destinationVC = segue.destination as! CategoryVC
+            destinationVC.delegate = self
+        }
+    }
+    
+    //MARK: - NumberPadManager
+    
     @IBAction func removeButton(_ sender: UIButton) {
         numberPadManager.remove(value, sender)
     }
     @IBAction func numbers(_ sender: UIButton) {
         numberPadManager.numbers(value, sender)
     }
-    // MARK: - Table view data source
+    
+    // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath)
@@ -101,12 +113,7 @@ class EditTransactionVC: UITableViewController, CategoriesDelegate {
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "categories" {
-            let destinationVC = segue.destination as! CategoryVC
-            destinationVC.delegate = self
-        }
-    }
+    //MARK: - Transaction Update Info
     
     func getCategoryInfo(category: Category) {
         categoryInfo = category
@@ -132,8 +139,6 @@ class EditTransactionVC: UITableViewController, CategoriesDelegate {
             cell2.accessoryType = .none
             cell3.accessoryType = .none
             tableView.allowsSelection = false
-            //sender.title = "Ред."
-            //tableView.reloadData()
             navigationController?.popViewController(animated: true)
         }
     }

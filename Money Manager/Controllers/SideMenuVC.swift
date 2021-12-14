@@ -10,7 +10,7 @@ import UIKit
 class SideMenuVC: UITableViewController {
     
     @IBOutlet weak var switchDarkModeStatus: UISwitch!
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if UserDefaultsModel.shared.theme == .dark {

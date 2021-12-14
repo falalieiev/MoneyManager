@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class EditBillVC: UITableViewController, SearchCurrencyDelegate {
+class EditBillVC: UITableViewController {
     
     @IBOutlet var numberPadView: UIView!
     @IBOutlet weak var billCapital: UILabel!
@@ -19,7 +19,8 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
     var dic: [String: Any?] = ["name": Any?.self]
     let currency = CurrencyModel()
     let numberPadManager = NumberPadManager()
-
+    
+    //MARK: - View LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,14 +35,23 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
         self.navigationController?.view.addSubview(numberPadView)
         numberPadView.frame = CGRect(x: 0,
                                      y: self.view.bounds.size.height - (numberPadView.bounds.size.height + 40),
-                                    width: self.view.bounds.size.width,
-                                    height: numberPadView.bounds.size.height)
+                                     width: self.view.bounds.size.width,
+                                     height: numberPadView.bounds.size.height)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         numberPadView.removeFromSuperview()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editCurrency" {
+            let currencyVC = segue.destination as! CurrencySearchVC
+            currencyVC.delegate = self
+        }
+    }
+    
+    //MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let currentCell = tableView.cellForRow(at: indexPath)
@@ -75,12 +85,12 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
         
         if indexPath.row == 1 {
             numberPadView.isHidden = true
-           performSegue(withIdentifier: "editCurrency", sender: self)
+            performSegue(withIdentifier: "editCurrency", sender: self)
         }
         
         if indexPath.row == 2 {
             if numberPadView.isHidden {
-            numberPadView.isHidden = false
+                numberPadView.isHidden = false
             } else {
                 numberPadView.isHidden = true
             }
@@ -88,16 +98,11 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
         }
     }
     
-    func getCurrency(_ currencyIndexPassed: Int) {
-        billCurrency.text = currency.currencyArray[currencyIndexPassed]
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editCurrency" {
-            let currencyVC = segue.destination as! CurrencySearchVC
-            currencyVC.delegate = self
-        }
-    }
+    //MARK: - NumberPadManager
     
     @IBAction func numbers(_ sender: UIButton) {
         numberPadManager.numbers(billCapital, sender)
@@ -107,6 +112,8 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
         numberPadManager.remove(billCapital, sender)
     }
     
+    //MARK: - UpdateButton
+    
     @IBAction func updateBillPressed(_ sender: UIBarButtonItem) {
         let dict: [String: Any?] = ["name": billName.text,
                                     "currency": billCurrency.text,
@@ -114,8 +121,13 @@ class EditBillVC: UITableViewController, SearchCurrencyDelegate {
         RealmService.shared.update(billForEdit, with: dict)
         navigationController?.popViewController(animated: true)
     }
+}
+
+    //MARK: - SearchCurrencyDelegate
+
+extension EditBillVC: SearchCurrencyDelegate {
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0.1
+    func getCurrency(_ currencyIndexPassed: Int) {
+        billCurrency.text = currency.currencyArray[currencyIndexPassed]
     }
 }

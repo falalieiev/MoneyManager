@@ -800,7 +800,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" id="Mm2-6v-TUq">
                             <color key="tintColor" name="text"/>
                             <connections>
-                                <segue destination="waG-zJ-0V8" kind="presentation" identifier="sideMenuSettings" id="jLC-Lo-Kzj"/>
+                                <action selector="sideMenuButton:" destination="BYZ-38-t0r" id="IyA-sI-q5f"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ofH-I0-aOf">
@@ -1367,22 +1367,22 @@
                                 <rect key="frame" x="10" y="138" width="408" height="694"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcf-4A-75Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="408" height="135"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="408" height="140.66666666666666"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="80"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wrp-ku-v2g">
-                                        <rect key="frame" x="0.0" y="185" width="408" height="113.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="190.66666666666669" width="408" height="88.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Выбор валюты" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-y6-Bud">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="63"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="38"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" name="text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Выберите валюту из списке ниже или нажмите на гвоздик для поиска." textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cX1-mS-iJz">
-                                                <rect key="frame" x="0.0" y="73" width="408" height="40.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="48" width="408" height="40.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1390,7 +1390,7 @@
                                         </subviews>
                                     </stackView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRI-w0-pQl">
-                                        <rect key="frame" x="0.0" y="348.66666666666674" width="408" height="345.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="329.33333333333326" width="408" height="364.66666666666674"/>
                                         <color key="tintColor" name="text"/>
                                     </pickerView>
                                 </subviews>
@@ -1429,7 +1429,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Qay-AK-h7c"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ojy-mz-gza">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1439,6 +1439,7 @@
                             <real key="value" value="300"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="presentingViewControllerUserInteractionEnabled" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="enableTapToDismissGesture" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="j6J-OD-swk" kind="relationship" relationship="rootViewController" id="X46-4E-UmX"/>
@@ -1453,7 +1454,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="sideMenuPerfom" id="j6J-OD-swk" customClass="SideMenuVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="aX5-9W-BNj">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="872"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="background"/>
                         <sections>
@@ -1800,15 +1801,15 @@
                                     <constraint firstAttribute="height" constant="35" id="7uw-QJ-vBk"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Расходы"/>
+                                    <segment title="Доходы"/>
                                 </segments>
                                 <connections>
                                     <action selector="typeChanged:" destination="Jjg-II-TRj" eventType="valueChanged" id="wmf-p0-xaj"/>
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="2he-qF-7wS">
-                                <rect key="frame" x="0.0" y="128" width="428" height="764"/>
+                                <rect key="frame" x="0.0" y="128" width="428" height="715"/>
                                 <color key="backgroundColor" name="background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="categories" textLabel="VKX-W7-Ujc" style="IBUITableViewCellStyleDefault" id="7Oz-xA-HB3">
@@ -1854,7 +1855,7 @@
             </objects>
             <point key="canvasLocation" x="1768" y="829"/>
         </scene>
-        <!--Редактирование-->
+        <!--Запись-->
         <scene sceneID="826-bP-ZHF">
             <objects>
                 <tableViewController id="JPM-4B-HWF" customClass="EditTransactionVC" customModule="Money_Manager" customModuleProvider="target" sceneMemberID="viewController">
@@ -1975,7 +1976,7 @@
                             <outlet property="delegate" destination="JPM-4B-HWF" id="SDk-gK-4Gd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Редактирование" id="eYj-uo-oot">
+                    <navigationItem key="navigationItem" title="Запись" id="eYj-uo-oot">
                         <barButtonItem key="backBarButtonItem" title=" " id="d1a-bA-fDx"/>
                         <barButtonItem key="rightBarButtonItem" title="Ред." id="1aO-X2-o5C">
                             <connections>
@@ -2188,7 +2189,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Mev-YW-yCG"/>
-        <segue reference="XfI-cC-uQT"/>
+        <segue reference="3AI-2z-R80"/>
         <segue reference="JtZ-6A-vTR"/>
         <segue reference="Bk2-fk-cTl"/>
     </inferredMetricsTieBreakers>

@@ -24,6 +24,8 @@ class TransactionsSummaryVC: UIViewController {
     var billSymbol = ""
     let colors = Colors()
     
+    //MARK: - View LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +38,7 @@ class TransactionsSummaryVC: UIViewController {
         arrayExpenses = transactionObject.filter("transactionType == %@", 0).distinct(by: ["category"]).value(forKey: "category") as! [String]
         arrayIncome = transactionObject.filter("transactionType == %@", 1).distinct(by: ["category"]).value(forKey: "category") as! [String]
         if segmentControl.selectedSegmentIndex == 0 {
-        sortedDictionary = RealmService.shared.transactionsByOrder(array: arrayExpenses, object: transactionObject, type: 0)
+            sortedDictionary = RealmService.shared.transactionsByOrder(array: arrayExpenses, object: transactionObject, type: 0)
         } else {
             sortedDictionary = RealmService.shared.transactionsByOrder(array: arrayIncome, object: transactionObject, type: 1)
         }
@@ -53,6 +55,8 @@ class TransactionsSummaryVC: UIViewController {
         destinationVC.billSymbol = billSymbol
     }
     
+    //MARK: - Type Of Transaction Changed
+    
     @IBAction func transactionTypeChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
             sortedDictionary = []
@@ -68,6 +72,8 @@ class TransactionsSummaryVC: UIViewController {
         tableView.reloadData()
     }
     
+    //MARK: - Chart Setup
+    
     func createChart(x: Double, y: Double) {
         chartView.chartSetting(chartView)
         entries.append(BarChartDataEntry(x: x, y: y))
@@ -79,6 +85,8 @@ class TransactionsSummaryVC: UIViewController {
     }
     
 }
+
+    //MARK: - UITableView
 
 extension TransactionsSummaryVC: UITableViewDelegate {
     
@@ -93,7 +101,7 @@ extension TransactionsSummaryVC: UITableViewDelegate {
 extension TransactionsSummaryVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TransactionCell
-
+        
         let keysArraySorted = Array(sortedDictionary.map({ $0.key }))
         var valuesArraySorted = Array(sortedDictionary.map({ $0.value }))
         cell.transactionName.text = keysArraySorted[indexPath.row]

@@ -7,11 +7,17 @@
 
 import UIKit
 
-class AddCurrencyVC: UIViewController, SearchCurrencyDelegate {
-    
+class AddCurrencyVC: UIViewController {
     
     @IBOutlet weak var currencyPicker: UIPickerView!
     @IBOutlet weak var searchButton: UILabel!
+    
+    let currencyModel = CurrencyModel()
+    var currencySymbol = ""
+    var billName = ""
+    var currencyIndex: Int?
+    
+    //MARK: - View LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +32,6 @@ class AddCurrencyVC: UIViewController, SearchCurrencyDelegate {
         searchButton.addGestureRecognizer(gesture)
     }
     
-    let currencyModel = CurrencyModel()
-    var currencySymbol = ""
-    var billName = ""
-    var currencyIndex: Int?
-    
-    @IBAction func toBudget(_ sender: UIButton) {
-        performSegue(withIdentifier: "addBudget", sender: sender)
-    }
-    
-    @objc func searchPressed(sender : UITapGestureRecognizer) {
-        performSegue(withIdentifier: "currencySearch", sender: self)
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if currencyIndex != nil {
@@ -46,12 +40,44 @@ class AddCurrencyVC: UIViewController, SearchCurrencyDelegate {
         }
     }
     
+    //MARK: - Buttons
+    
+    @IBAction func toBudget(_ sender: UIButton) {
+        performSegue(withIdentifier: "addBudget", sender: sender)
+    }
+    
+    @objc func searchPressed(sender : UITapGestureRecognizer) {
+        performSegue(withIdentifier: "currencySearch", sender: self)
+    }
+}
+
+    //MARK: - SearchCurrencyDelegate
+
+extension AddCurrencyVC: SearchCurrencyDelegate {
+    
     func getCurrency(_ currencyIndexPassed: Int) {
         currencyIndex = currencyIndexPassed
     }
 }
 
-extension AddCurrencyVC: UIPickerViewDataSource {
+    //MARK: - UIPickerView Methods
+
+extension AddCurrencyVC: UIPickerViewDelegate, UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        currencySymbol = currencyModel.currencyArray[row]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addBudget" {
+            let destinationVC = segue.destination as! AddBudgetVC
+            destinationVC.currencyNew = currencySymbol
+            destinationVC.billNew = billName
+            print(destinationVC.currencyNew)
+        } else if segue.identifier == "currencySearch" {
+            let searchVC = segue.destination as! CurrencySearchVC
+            searchVC.delegate = self
+        }
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -70,23 +96,5 @@ extension AddCurrencyVC: UIPickerViewDataSource {
         }
         pickerLabel?.text = currencyModel.currencyArray[row]
         return pickerLabel!
-    }
-}
-
-extension AddCurrencyVC: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        currencySymbol = currencyModel.currencyArray[row]
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addBudget" {
-            let destinationVC = segue.destination as! AddBudgetVC
-            destinationVC.currencyNew = currencySymbol
-            destinationVC.billNew = billName
-            print(destinationVC.currencyNew)
-        } else if segue.identifier == "currencySearch" {
-            let searchVC = segue.destination as! CurrencySearchVC
-            searchVC.delegate = self
-        }
     }
 }

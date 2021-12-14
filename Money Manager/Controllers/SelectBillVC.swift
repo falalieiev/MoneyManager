@@ -8,11 +8,21 @@
 import UIKit
 import RealmSwift
 
-protocol MainVCDelegate: AnyObject {
+protocol MainVCDelegate {
     func updateBillIndex(_ billIndex: Int)
 }
 
 class SelectBillVC: UITableViewController {
+    
+    var delegate: MainVCDelegate?
+    var transactionObject: List<Transaction>!
+    var bill: Results<Bill>!
+    var billIndexPassed: Int?
+    var sum1: Float = 0.0
+    var billForEdit: Bill!
+    let colors = Colors()
+    
+    //MARK: - View LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +36,12 @@ class SelectBillVC: UITableViewController {
         tableView.tableFooterView = UIView(frame: frame)
     }
     
-    weak var delegate: MainVCDelegate?
-    var transactionObject: List<Transaction>!
-    var bill: Results<Bill>!
-    var billIndexPassed: Int?
-    var sum1: Float = 0.0
-    var billForEdit: Bill!
-    let colors = Colors()
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
     }
+    
+    //MARK: - Bill Selected
     
     @IBAction func addBillPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "addFromBills", sender: sender)
@@ -45,12 +49,12 @@ class SelectBillVC: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editBill" {
-        let destinationVC = segue.destination as! EditBillVC
-        destinationVC.billForEdit = billForEdit
+            let destinationVC = segue.destination as! EditBillVC
+            destinationVC.billForEdit = billForEdit
         }
     }
     
-    // MARK: - Table view data source
+    // MARK: - TableView
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bill.count

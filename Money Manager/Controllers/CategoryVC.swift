@@ -13,7 +13,7 @@ protocol CategoriesDelegate {
 }
 
 class CategoryVC: UIViewController {
-
+    
     @IBOutlet weak var type: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
@@ -28,15 +28,17 @@ class CategoryVC: UIViewController {
         let realm = RealmService.shared.realm
         categories = realm.objects(Category.self)
     }
-
+    
     @IBAction func typeChanged(_ sender: UISegmentedControl) {
         tableView.reloadData()
     }
 }
 
+    //MARK: - UITableView
+
 extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
     
-     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if type.selectedSegmentIndex == 0 {
             return categories.filter("type == %@", 0).count
         } else {
@@ -44,7 +46,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categories", for: indexPath)
         var content = cell.defaultContentConfiguration()
         
@@ -57,7 +59,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.getCategoryInfo(category: categories.filter("type == %@", type.selectedSegmentIndex)[indexPath.row])
         navigationController?.popViewController(animated: true)
     }

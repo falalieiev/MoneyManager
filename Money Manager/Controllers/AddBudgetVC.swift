@@ -23,7 +23,9 @@ class AddBudgetVC: UIViewController {
         let realm = RealmService.shared.realm
         bill = realm.objects(Bill.self)
     }
-
+    
+    //MARK: - NumberPadManager
+    
     @IBAction func numberButtons(_ sender: UIButton) {
         numberPadManager.numbers(budgetLabel, sender)
     }
@@ -41,5 +43,4 @@ class AddBudgetVC: UIViewController {
         
         navigationController?.popToRootViewController(animated: true)
     }
-    
 }

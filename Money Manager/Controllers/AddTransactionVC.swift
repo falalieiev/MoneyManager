@@ -24,12 +24,14 @@ class AddTransactionVC: UIViewController {
     var notificationToken: NotificationToken?
     var indexPathsForSelectedItems: [IndexPath]?
     
+    //MARK: - View LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         notesTextField.delegate = self
         categoriesCollection.delegate = self
         categoriesCollection.dataSource = self
-       
+        
         let realm = RealmService.shared.realm
         categories = realm.objects(Category.self)
         
@@ -42,20 +44,25 @@ class AddTransactionVC: UIViewController {
         notificationToken?.invalidate()
     }
     
+    //MARK: - New Transaction
+    
     @IBAction func addButtonPressed(_ sender: UIButton) {
         if categoryName == "" {
             print("u must select category")
         } else {
-        let valueString = valueLabel.text!
-        let newValue = Float(valueString) ?? 0.0
-        let newTransaction = Transaction(value: newValue, note: notesTextField.text, transactionType: segmentPicker.selectedSegmentIndex, creationDate: Date(), category: categoryName)
-        RealmService.shared.append(newTransaction, currentBill!)
-        navigationController?.popToRootViewController(animated: true)
+            let valueString = valueLabel.text!
+            let newValue = Float(valueString) ?? 0.0
+            let newTransaction = Transaction(value: newValue, note: notesTextField.text, transactionType: segmentPicker.selectedSegmentIndex, creationDate: Date(), category: categoryName)
+            RealmService.shared.append(newTransaction, currentBill!)
+            navigationController?.popToRootViewController(animated: true)
         }
     }
+    
     @IBAction func typeChanged(_ sender: UISegmentedControl) {
         categoriesCollection.reloadData()
     }
+    
+    //MARK: - NumberPadManager
     
     @IBAction func numberButtons(_ sender: UIButton) {
         numberPadManager.numbers(valueLabel, sender)
@@ -66,12 +73,16 @@ class AddTransactionVC: UIViewController {
     }
 }
 
+    //MARK: - UITextField
+
 extension AddTransactionVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         notesTextField.resignFirstResponder()
         return true
     }
 }
+
+    //MARK: - UICollectionView
 
 extension AddTransactionVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

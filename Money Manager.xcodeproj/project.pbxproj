@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1B3A8E2768CA8E0060210E /* MainVCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1B3A8D2768CA8E0060210E /* MainVCManager.swift */; };
 		1A3480B92751089D009FDED2 /* AddBillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480B82751089D009FDED2 /* AddBillVC.swift */; };
 		1A3480BB275147C9009FDED2 /* AddCurrencyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */; };
 		1A3480BD27515346009FDED2 /* AddBudgetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3480BC27515346009FDED2 /* AddBudgetVC.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		128F7F4CAC196D51EC82BA56 /* Pods_Money_Manager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Money_Manager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A1B3A8D2768CA8E0060210E /* MainVCManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVCManager.swift; sourceTree = "<group>"; };
 		1A3480B82751089D009FDED2 /* AddBillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBillVC.swift; sourceTree = "<group>"; };
 		1A3480BA275147C9009FDED2 /* AddCurrencyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCurrencyVC.swift; sourceTree = "<group>"; };
 		1A3480BC27515346009FDED2 /* AddBudgetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetVC.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				1ACC29E8275633F1000C53F2 /* Data */,
 				1A6497AB2752163D00DA1027 /* NumberPadManager.swift */,
 				1ACE15DE275B614E00FC966F /* CurrencyModel.swift */,
+				1A1B3A8D2768CA8E0060210E /* MainVCManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				1A3B1EF527625C38005C1D0E /* CategoryVC.swift in Sources */,
 				1A9A5BA327515C8D00EE2E92 /* Bill.swift in Sources */,
 				1A702B362758BBB900DE41EE /* TransactionsByCategoryVC.swift in Sources */,
+				1A1B3A8E2768CA8E0060210E /* MainVCManager.swift in Sources */,
 				1A6629B42750A45800E67D37 /* SceneDelegate.swift in Sources */,
 				1A391E442754EBC700757EBB /* Extensions.swift in Sources */,
 				1A70B806275206A30016986B /* BillCell.swift in Sources */,

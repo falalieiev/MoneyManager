@@ -8,7 +8,7 @@
 import UIKit
 
 class AddBillVC: UIViewController {
-
+    
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var textField: UITextField!
     
@@ -21,15 +21,22 @@ class AddBillVC: UIViewController {
         if textField.text!.isEmpty{
             nextButton.isUserInteractionEnabled = false
             nextButton.alpha = 0.5
-            }
-    }
-
-    @IBAction func toCurrencyChoice(_ sender: UIButton) {
-        if billName != "" {
-        performSegue(withIdentifier: "addCurrency", sender: sender)
         }
     }
+    
+    @IBAction func toCurrencyChoice(_ sender: UIButton) {
+        if billName != "" {
+            performSegue(withIdentifier: "addCurrency", sender: sender)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! AddCurrencyVC
+        destinationVC.billName = billName
+    }
 }
+
+    //MARK: - TextFieldDelegate
 
 extension AddBillVC: UITextFieldDelegate {
     
@@ -51,19 +58,14 @@ extension AddBillVC: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-
-            if !text.isEmpty{
-                nextButton.isUserInteractionEnabled = true
-                nextButton.alpha = 1
-            } else {
-                nextButton.isUserInteractionEnabled = false
-                nextButton.alpha = 0.5
-            }
-            return true
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! AddCurrencyVC
-        destinationVC.billName = billName
+        
+        if !text.isEmpty{
+            nextButton.isUserInteractionEnabled = true
+            nextButton.alpha = 1
+        } else {
+            nextButton.isUserInteractionEnabled = false
+            nextButton.alpha = 0.5
+        }
+        return true
     }
 }

@@ -15,6 +15,8 @@ class TransactionsByCategoryVC: UITableViewController {
     var billSymbol = ""
     let colors = Colors()
     
+    //MARK: - View LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -36,7 +38,12 @@ class TransactionsByCategoryVC: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
     }
     
-    // MARK: - Table view data source
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! EditTransactionVC
+        destinationVC.transactionForEdit = transactionForEdit
+    }
+    
+    // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return operations.count
@@ -54,11 +61,6 @@ class TransactionsByCategoryVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         transactionForEdit = operations.sorted(byKeyPath: "creationDate", ascending: false)[indexPath.row]
         performSegue(withIdentifier: "editTransaction", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! EditTransactionVC
-        destinationVC.transactionForEdit = transactionForEdit
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

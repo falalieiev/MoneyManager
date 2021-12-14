@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NumberPadManager {
+struct NumberPadManager {
     
     func numbers(_ label: UILabel, _ sender: UIButton) {
         var numValue = sender.currentTitle!

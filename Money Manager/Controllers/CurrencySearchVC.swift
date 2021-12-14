@@ -11,7 +11,7 @@ protocol SearchCurrencyDelegate: AnyObject {
     func getCurrency(_ currencyIndexPassed: Int)
 }
 
-class CurrencySearchVC: UITableViewController, UISearchBarDelegate {
+class CurrencySearchVC: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -27,7 +27,7 @@ class CurrencySearchVC: UITableViewController, UISearchBarDelegate {
     }
     
     
-    // MARK: - Table view data source
+    // MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
@@ -45,6 +45,11 @@ class CurrencySearchVC: UITableViewController, UISearchBarDelegate {
         }
         navigationController?.popViewController(animated: true)
     }
+}
+
+    //MARK: - UISearchBar
+
+extension CurrencySearchVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         data = searchText.isEmpty ? currencyModel.currencyArray : currencyModel.currencyArray.filter { (item: String) -> Bool in
