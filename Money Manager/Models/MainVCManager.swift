@@ -87,14 +87,24 @@ struct MainVCManager {
     
     func sideMenuSettings(_ vc: SideMenuNavigationController, _ v: UIView, _ nb: UINavigationBar) {
         SideMenuManager.default.leftMenuNavigationController = vc
-        SideMenuManager.default.addPanGestureToPresent(toView: v)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: nb, forMenu: .left)
-        
+        SideMenuManager.default.addPanGestureToPresent(toView: nb)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: v, forMenu: .left)
         var settings = SideMenuSettings()
         settings.presentationStyle = .viewSlideOutMenuIn
         settings.menuWidth = 300
         settings.presentationStyle.presentingEndAlpha = 0.5
         
         SideMenuManager.default.leftMenuNavigationController?.settings = settings
+    }
+    
+    func deleteAction(indexPath: IndexPath, loadTransaction: @escaping () -> Void) -> UISwipeActionsConfiguration {
+        let trashAction = UIContextualAction(style: .destructive, title:  "Trash", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            RealmService.shared.delete(self.items![indexPath.row])
+            loadTransaction()
+            success(true)
+        })
+        trashAction.backgroundColor = .red
+        trashAction.image = UIImage(systemName: "trash")
+        return UISwipeActionsConfiguration(actions: [trashAction])
     }
 }

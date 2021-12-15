@@ -1367,22 +1367,22 @@
                                 <rect key="frame" x="10" y="138" width="408" height="694"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="📌" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jcf-4A-75Q">
-                                        <rect key="frame" x="0.0" y="0.0" width="408" height="140.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="408" height="135"/>
                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="80"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wrp-ku-v2g">
-                                        <rect key="frame" x="0.0" y="190.66666666666669" width="408" height="88.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="185" width="408" height="113.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Выбор валюты" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-y6-Bud">
-                                                <rect key="frame" x="0.0" y="0.0" width="408" height="38"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="408" height="63"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" name="text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Выберите валюту из списке ниже или нажмите на гвоздик для поиска." textAlignment="center" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cX1-mS-iJz">
-                                                <rect key="frame" x="0.0" y="48" width="408" height="40.666666666666657"/>
+                                                <rect key="frame" x="0.0" y="73" width="408" height="40.666666666666657"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" systemColor="systemGrayColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1390,7 +1390,7 @@
                                         </subviews>
                                     </stackView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRI-w0-pQl">
-                                        <rect key="frame" x="0.0" y="329.33333333333326" width="408" height="364.66666666666674"/>
+                                        <rect key="frame" x="0.0" y="348.66666666666674" width="408" height="345.33333333333326"/>
                                         <color key="tintColor" name="text"/>
                                     </pickerView>
                                 </subviews>
@@ -1439,7 +1439,6 @@
                             <real key="value" value="300"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="presentingViewControllerUserInteractionEnabled" value="YES"/>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="enableTapToDismissGesture" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <segue destination="j6J-OD-swk" kind="relationship" relationship="rootViewController" id="X46-4E-UmX"/>

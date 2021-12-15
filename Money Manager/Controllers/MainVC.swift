@@ -41,7 +41,7 @@ class MainVC: UIViewController {
         
         loadTransactions()
         
-        sideMenu = (storyboard?.instantiateViewController(withIdentifier: "sideMenu") as? SideMenuNavigationController)!
+        sideMenu = storyboard?.instantiateViewController(withIdentifier: "sideMenu") as? SideMenuNavigationController
         manager.sideMenuSettings(sideMenu, view, navigationController!.navigationBar)
         
         tableView.sectionFooterHeight = 1
@@ -152,14 +152,9 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let trashAction = UIContextualAction(style: .destructive, title:  "Trash", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            RealmService.shared.delete(self.manager.items![indexPath.row])
+        manager.deleteAction(indexPath: indexPath) {
             self.loadTransactions()
-            success(true)
-        })
-        trashAction.backgroundColor = .red
-        trashAction.image = UIImage(systemName: "trash")
-        return UISwipeActionsConfiguration(actions: [trashAction])
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
