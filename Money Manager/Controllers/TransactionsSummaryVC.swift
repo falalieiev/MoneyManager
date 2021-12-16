@@ -108,9 +108,11 @@ extension TransactionsSummaryVC: UITableViewDataSource {
         cell.transactionValue.text = valuesArraySorted[indexPath.row].floatToString() + billSymbol
         cell.transactionColor.textColor = colors.colors[indexPath.row % colors.colors.count]
         
-        if entries.count < 12 {
+        if entries.count <= sortedDictionary.count - 1 {
+            if entries.count < 12 {
             let yValue = valuesArraySorted[indexPath.row].rounded()
             createChart(x: Double(indexPath.row + 1), y: Double(yValue))
+            }
         }
         return cell
     }
