@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol SearchCurrencyDelegate: AnyObject {
-    func getCurrency(_ currencyIndexPassed: Int)
-}
-
 class CurrencySearchVC: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!

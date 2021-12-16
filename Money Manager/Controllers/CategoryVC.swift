@@ -8,10 +8,6 @@
 import UIKit
 import RealmSwift
 
-protocol CategoriesDelegate {
-    func getCategoryInfo(category: Category)
-}
-
 class CategoryVC: UIViewController {
     
     @IBOutlet weak var type: UISegmentedControl!
@@ -19,6 +15,7 @@ class CategoryVC: UIViewController {
     
     var categories: Results<Category>!
     var delegate: CategoriesDelegate?
+    var canBeSelected = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +24,10 @@ class CategoryVC: UIViewController {
         
         let realm = RealmService.shared.realm
         categories = realm.objects(Category.self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.allowsSelection = canBeSelected
     }
     
     @IBAction func typeChanged(_ sender: UISegmentedControl) {

@@ -8,10 +8,6 @@
 import UIKit
 import RealmSwift
 
-protocol MainVCDelegate {
-    func updateBillIndex(_ billIndex: Int)
-}
-
 class SelectBillVC: UITableViewController {
     
     var delegate: MainVCDelegate?

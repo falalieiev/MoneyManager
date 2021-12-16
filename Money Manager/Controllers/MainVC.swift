@@ -23,6 +23,7 @@ class MainVC: UIViewController {
     var billValueFloat: Float = 0.0
     var manager = MainVCManager()
     var sideMenu: SideMenuNavigationController!
+    let notificationManager = NotificationManager()
     
     //MARK: - View LifeCycle
     
@@ -49,6 +50,8 @@ class MainVC: UIViewController {
         
         let formate = Date().getFormattedDate(format: "E, d MMMM")
         self.title = formate
+        
+        notificationManager.notification()
     }
     
     override func viewWillAppear(_ animated: Bool) {

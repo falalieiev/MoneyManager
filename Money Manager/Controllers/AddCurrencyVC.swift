@@ -24,8 +24,8 @@ class AddCurrencyVC: UIViewController {
         currencyPicker.delegate = self
         currencyPicker.dataSource = self
         
-        currencyPicker.selectRow(6, inComponent: 0, animated: false)
-        pickerView(currencyPicker, didSelectRow: 6, inComponent: 0)
+        currencyPicker.selectRow(142, inComponent: 0, animated: false)
+        pickerView(currencyPicker, didSelectRow: 142, inComponent: 0)
         
         searchButton.isUserInteractionEnabled = true
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(searchPressed))

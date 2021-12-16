@@ -40,4 +40,11 @@ class SideMenuVC: UITableViewController {
             performSegue(withIdentifier: "showCategories", sender: self)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCategories" {
+            let destinationVC = segue.destination as! CategoryVC
+            destinationVC.canBeSelected = false
+        }
+    }
 }
