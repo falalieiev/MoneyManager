@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         //print(Realm.Configuration.defaultConfiguration.fileURL)
         UINavigationBar.appearance().barTintColor = UIColor(named: "background")
+        UIApplication.shared.applicationIconBadgeNumber = 0
         return true
     }
     
