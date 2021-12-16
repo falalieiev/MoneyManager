@@ -7,6 +7,6 @@
 
 import UIKit
 
-class Colors {
-    let colors = [UIColor.systemPink, UIColor.systemMint, UIColor.systemRed, UIColor.systemBlue, UIColor.systemCyan, UIColor.systemTeal, UIColor.systemGreen, UIColor.systemOrange, UIColor.systemPurple, UIColor.systemIndigo, UIColor.systemBrown, UIColor.systemYellow]
+struct Colors {
+    let colors = [UIColor.systemRed, UIColor.systemBlue, UIColor.systemGreen, UIColor.systemYellow, UIColor.systemPurple, UIColor.systemOrange, UIColor.systemMint, UIColor.systemBrown, UIColor.systemPink, UIColor.systemIndigo, UIColor.systemGray, UIColor.systemCyan]
 }
